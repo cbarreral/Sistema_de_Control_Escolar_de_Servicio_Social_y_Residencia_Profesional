@@ -19,7 +19,7 @@ class CarrerasC
                 </script>';
             }
         }
-    } 
+    }
 
     //Ver carreras
 
@@ -30,9 +30,10 @@ class CarrerasC
         return $resultado;
     }
 
-    static public function verCarreraC($columna,$valor){
+    static public function verCarreraC($columna, $valor)
+    {
         $tablaBD = "carrera";
-        $resultado = CarrerasM::vercarreraM($tablaBD,$columna,$valor);
+        $resultado = CarrerasM::vercarreraM($tablaBD, $columna, $valor);
         return $resultado;
     }
 
@@ -48,8 +49,8 @@ class CarrerasC
         echo '
        <div class="col-md-6 colxs-12">
        <h2>Nombre de la carrera:</h2>
-       <input type="text" name="carrera" value="'.$resultado["nombre"].'" class="form-control input-lg" required id="">
-       <input type="hidden" name="Cid" value="'.$resultado["id"].'" class="form-control input-lg" id="">
+       <input type="text" name="carrera" value="' . $resultado["nombre"] . '" class="form-control input-lg" required id="">
+       <input type="hidden" name="Cid" value="' . $resultado["id"] . '" class="form-control input-lg" id="">
 
        <br>
        <button class="btn btn-sucess" type="submit">Guradar datos</button>
@@ -58,20 +59,21 @@ class CarrerasC
     }
 
     //Actualizar carrera
-    public function ActualizarCarrerasC(){
-        if(isset($_POST["carrera"])){
+    public function ActualizarCarrerasC()
+    {
+        if (isset($_POST["carrera"])) {
             $tablaBD = "carrera";
-            $datosC = array("id"=>$_POST["Cid"],"carrera"=>$_POST["carrera"]);
+            $datosC = array("id" => $_POST["Cid"], "carrera" => $_POST["carrera"]);
 
-            $resultado = CarrerasM::ActualizarCarrerasM($tablaBD,$datosC);
+            $resultado = CarrerasM::ActualizarCarrerasM($tablaBD, $datosC);
 
-            if($resultado == true){
+            if ($resultado == true) {
                 echo '<script>
 
                 window.location = "http://localhost/Sistema/carreras";
 
                 </script>';
-            }else{
+            } else {
                 echo '<script>
 
                 window.location = "http://localhost/Sistema/carreras";
@@ -88,17 +90,19 @@ class CarrerasC
         $exp = explode("/", $_GET["url"]);
         $id = $exp[1];
 
-        if(isset($id)){
+        if (isset($id)) {
             $tablaBD = "carrera";
 
             $resultado = CarrerasM::BorrarCarreraM($tablaBD, $id);
 
-            if($resultado == true){
+            if ($resultado == true) {
                 echo '<script>
 
                 window.location = "http://localhost/Sistema/carreras";
 
                 </script>';
+
+             
             }
         }
     }

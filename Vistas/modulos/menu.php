@@ -48,7 +48,7 @@
                 <a href="http://localhost/Sistema/solicitud-Constancia">
                     <i class="fa fa-home">
                         <samp>Certificados</samp>
-                    </i>
+                    </i> 
                 </a>
 
             </li>

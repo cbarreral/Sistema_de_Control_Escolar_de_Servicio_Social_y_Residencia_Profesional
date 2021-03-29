@@ -23,5 +23,7 @@ require_once "Modelos/documentosEcenM.php";
 require_once "Controladores/ConstanciaC.php";
 require_once "Modelos/ConstanciaM.php";
 
+require_once "PHPMAiler"
+
 $plantilla = new Plantilla();
 $plantilla -> verPlantilla();
