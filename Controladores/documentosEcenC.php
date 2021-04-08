@@ -26,14 +26,15 @@ class DocumentosEcenC
     public function EliminarDocumento()
     {
         $exp = explode("/", $_GET["url"]);
-        $id = $exp[3];
+        
 
-        if (isset($id)) {
+        if (isset($exp[3])) {
             $tablaBD = "documentos";
 
-            $resultado = DocumentosEcenM::BorrarDocumentosM($tablaBD, $id);
+            $resultado = DocumentosEcenM::BorrarDocumentosM($tablaBD, $exp[3]);
+            $resultado2 =ChatM::BorrarChatM("observacionesdoc",$exp[3]);
 
-            if ($resultado == true) {
+            if ($resultado == true&&$resultado2 == true) {
                 echo '<script>
 
                 window.location = "http://localhost/Sistema/verCarpeta/' . $exp[1] . '/' . $exp[2] . '";

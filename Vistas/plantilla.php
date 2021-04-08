@@ -132,10 +132,7 @@ session_start();
                 include "modulos/" . $url[0] . ".php";
 
              
-    echo'<script type="text/javascript">
-    //  alert("'.$_SESSION["rol"].'");
-    ;
-    </script>';
+   
             } else {
 
                 include "modulos/404.php";

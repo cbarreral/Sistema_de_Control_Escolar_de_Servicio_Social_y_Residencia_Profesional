@@ -17,6 +17,7 @@
         if ($_SESSION["rol"] == "Alumno" && $inscto != null) {
             echo '
             <button  type="button"  class="btn btn-primary"  data-mdb-toggle="modal"  data-mdb-target="#SubirPDF">Subir PDF</button>
+            <button  type="button"  class="btn btn-info"  data-mdb-toggle="modal"  data-mdb-target="#SubirReportesPDF">Subir Reporte en PDF</button>
          
             ';
         } else {
@@ -44,8 +45,8 @@
                             <th>N°</th>
                             <th>Fecha</th>
                             <th>Nombre de documento</th>
-                            <th>Documento PDF</th>
-                            <th>Obcervaciones</th>
+                            <th>Ver Documento / Observaciones</th>
+                            
                             <?php
                             if ($_SESSION["rol"] == "Alumno") {
                                 echo '
@@ -73,33 +74,35 @@
                                 <td>' . $i . '</td>
                                 <td>' . $N["fecha"] . '</td>
                                 <td>' . $N["nombre"] . '</td>
-                                    <td><a href="https://localhost/Sistema/Documentos/' . $N["PDF"] . '" target="black" data-placement="top" title="Ver archivo PDF (' . $N["PDF"] . ') ">Ver </a></td>
-                                 ';
+                                   
+                                 '; echo '
+                                <td>
+                                <a href="http://localhost/Sistema/Obcervaciones/' . $exp[2] .'/' . $N["id"] .'/1">  
+                                  <button class="btn btn-primary btn-sm pull-left"><i class="fa fa-delt"></i>Ver PDF</button>
+                                </a>
+                             </td>
+                            ';
                                 if ($_SESSION["rol"] == "Alumno") {
                                     echo '
                                     <td>
-                                       <a href="https://localhost/Sistema/verCarpeta/' . $exp[1] . '/' . $exp[2] . '/' . $N["id"] . '">  
-                                         <button class="btn btn-danger btn-sm pull-left"><i class="fa fa-delt"></i>Eliminar</button>
-                                       </a>
-                                    </td>
+                                    <a href="http://localhost/Sistema/verCarpeta/' . $exp[1] . '/' . $exp[2] . '/' . $N["id"] . '">  
+                                      <button class="btn btn-danger btn-sm pull-left"><i class="fa fa-delt"></i>Eliminar</button>
+                                    </a>
+                                 </td>
+
+                                    
 
                                      ';
                                 }
 
-                                echo '
-                                    <td>
-                                       <a href="https://localhost/Sistema/Obcervaciones/' . $exp[2] .'/' . $N["id"] .'">  
-                                         <button class="btn btn-primary btn-sm pull-left"><i class="fa fa-delt"></i>Observaciones</button>
-                                       </a>
-                                    </td>
-                            </tr>';
+                               
                             }
                         }
 
 
 
                         ?>
-
+</tr>
                     </tbody>
                 </table>
             </div>
@@ -112,23 +115,17 @@
 
 
         <!-- Tabla de Reportes y evaluaciones -->
-        <?php
-        if ($_SESSION["rol"] == "Alumno" && $inscto != null) {
-            echo '
-   <button class="btn btn-success" data-toggle="modal" data-target="#SubirReportesPDF">Subir Documento de reporte en PDF</button> <br><br>
-        ';
-        } ?>
+
         <div class="box">
             <div class="box-body">
                 <p class="text-center">Tabla de Reportes y Evaluaciones</p>
-                <table class="table table-bordered table-hover table-striped">
+                <table class=" table align-middle table-hover table-responsive T">
                     <thead>
                         <tr>
                             <th>N°</th>
-                            <th>Matricula</th>
                             <th>Fecha</th>
-                            <th>Nombre</th>
-                            <th>Reporte en PDF</th>
+                            <th>Nombre del reporte</th>
+                            <th>Ver Reporte / Observaciones</th>
                             <th>Nota de Acesor Academico</th>
                             <th>Nota de Acesor Industrial</th>
                             <th>Revisado por Jefe</th>
@@ -162,12 +159,17 @@
                                 echo '
                                 <tr>
                                 <td>' . $i . '</td>
-                                <td>' . $N["matricula"] . '</td>
                                 <td>' . $N["fecha"] . '</td>
                                 <td>' . $N["nombre"] . '</td>';
                                 if ($N["PDF"] != "") {
                                     echo '
-                                    <td><a href="https://localhost/Sistema/Documentos/' . $N["PDF"] . '" target="black" data-placement="top" title="Ver archivo PDF  (' . $N["PDF"] . ') ">Ver </a></td>
+                                   
+                                    <td>
+                                    <a href="http://localhost/Sistema/Obcervaciones/' . $exp[2] .'/' . $N["id"] .'/2">  
+                                      <button class="btn btn-primary btn-sm pull-left"><i class="fa fa-delt"></i>Ver PDF</button>
+                                    </a>
+                                 </td>
+
                                     ';
                                 } else {
                                     echo ' <td  data-placement="top" title="No se encontro un archivo PDF" style="color: red">No se adjunto un archivo PDF</td>';
@@ -314,5 +316,8 @@
 <?php
 $eliminarDoc = new DocumentosEcenC();
 $eliminarDoc->EliminarDocumento();
+
+$eliminarChat = new ChatC();
+$eliminarChat->EliminarChat();
 
 ?>
