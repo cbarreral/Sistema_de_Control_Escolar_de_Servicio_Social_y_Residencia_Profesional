@@ -14,6 +14,12 @@ if ($_SESSION["rol"] != "Admin") {
 $exp =explode("/", $_GET["url"]);
 
         $columna = "id";
+        if($exp[1]==null){
+            echo '<script>
+            window.location = "http://localhost/Sistema/catalogo";
+        </script>';
+        return;
+        }
         $valor = $exp[1];
         $carrera= CarrerasC::verCarreraC($columna,$valor);
         echo'
@@ -73,7 +79,7 @@ $exp =explode("/", $_GET["url"]);
                                         <a href="http://localhost/Sistema/crear-comisiones/'.$value["id"].'/'.$value["id_carrera"].'">
                                             <button class="btn btn-success">Detalles</button>
                                         </a>
-                                        <a href="#">
+                                        <a href="">
                                             <button class="btn btn-default EliminarMateria" Mid="'.$value["id"].'" Cid="'.$exp[1].'" >Eliminar</button>
                                         </a>
                                     </div>
@@ -97,7 +103,7 @@ $exp =explode("/", $_GET["url"]);
 
 <?php
 $eliminarM = new MateriasC();
-$eliminarM -> EliminarMateriaC();
+$eliminarM -> EliminarMateriaC(null);
 ?>
 <div class="modal fade" id="CrearMateria">
     <div class="modal-dialog">
@@ -129,6 +135,9 @@ $eliminarM -> EliminarMateriaC();
 							<option value="Residencia_Profecional">Residencia Profecional</option>
 
 						</select>
+
+
+                        
 
 					</div>
 

@@ -218,13 +218,13 @@ $matricula = $exp[2];
                                     if ($_SESSION["rol"] != "Admin") {
                                         echo '
             
-            <option value="Servicio Social">Servicio Social</option>
-            <option value="Residencia Profecional">Residencia Profecional</option>
+            <option value="Servicio_Social">Servicio Social</option>
+            <option value="Residencia_Profecional">Residencia Profecional</option>
             ';
                                     } else {
                                         echo '
-                    <option value="Servicio Social">Servicio Social</option>
-            <option value="Residencia Profecional">Residencia Profecional</option>
+                    <option value="Servicio_Social">Servicio Social</option>
+            <option value="Residencia_Profecional">Residencia Profecional</option>
             <option value="root">Root</option>
             <option value="a_Academico">Acesor academico</option>
             <option value="a_Industrial">Acesor Idustrial</option>

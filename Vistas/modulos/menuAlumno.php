@@ -41,14 +41,23 @@
             </li>
 
             <li>
-            <?php
-            echo'
-                <a href="http://localhost/Sistema/constancia-alumno/'.$_SESSION["matricula"].'/'.$_SESSION["id_carrera"].'">
+                <?php
+                echo '
+                <a href="http://localhost/Sistema/constancia-alumno/' . $_SESSION["matricula"] . '/' . $_SESSION["id_carrera"] . '">
                     <i class="fa fa-home">
                         <samp>Certificados</samp>
                     </i>
                 </a>';
-            ?>
+                ?>
+            </li>
+            <li>
+
+                <a href="http://localhost/Sistema/visitas">
+                    <i class="fa fa-home">
+                        <samp>Visitas a empresa</samp>
+                    </i>
+                </a>
+
             </li>
 
         </ul>

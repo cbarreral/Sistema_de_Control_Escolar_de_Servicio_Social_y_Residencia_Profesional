@@ -176,8 +176,7 @@ class UsuariosM extends ConexionBD
     //Eliminar usuarios
 
     static public function EliminarUsuariosM($tablaBD,$id){
-        $pdo = ConexionBD::conBD()->prepare("DELETE  FROM $tablaBD 
-        WHERE id = :id");
+        $pdo = ConexionBD::conBD()->prepare("DELETE  FROM $tablaBD WHERE id = :id");
         $pdo ->bindParam(":id",$id,PDO::PARAM_INT);
         if ($pdo->execute()) {
             return true;

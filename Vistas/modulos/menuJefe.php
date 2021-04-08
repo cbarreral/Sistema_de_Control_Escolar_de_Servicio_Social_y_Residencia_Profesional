@@ -60,7 +60,15 @@
                     </i>
                 </a>
             </li>
-           
+            <li>
+
+<a href="http://localhost/Sistema/visitas">
+    <i class="fa fa-home">
+        <samp>Visitas a empresa</samp>
+    </i> 
+</a>
+
+</li>
 
         </ul>
     </section>

@@ -2,50 +2,23 @@
 
 class MateriasC{
 
-	public function CrearMateriaC($id_carrera){
+	public function CrearMateriaC(){
 
-		if(isset($_POST["Cid"])){
-
-			//$rutaPrograma = "";
-
-			/*if($_FILES["PDF"]["type"] == "application/pdf"){
-
-				$nombre = mt_rand(10,999);
-
-				$rutaPrograma = "Vistas/programas/Prog-".$nombre.".pdf";
-
-				move_uploaded_file($_FILES["PDF"]["tmp_name"], $rutaPrograma);
-
-			}*/
-
+		if(isset($_POST["id_carrera"])){
+ 
 				$tablaBD = "materias";
 
-				$Cid = $_POST["Cid"];
-
-				$datosC = array("id_carrera"=>$_POST["Cid"], "codigo"=>$_POST["codigo"], "nombre"=>$_POST["nombre"], "tipo"=>$_POST["tipo"]);
+				$datosC = array("id_carrera"=>$_POST["id_carrera"], "codigo"=>$_POST["codigo"], "nombre"=>$_POST["nombre"], "tipo"=>$_POST["tipo"]);
 
 				$resultado = MateriasM::CrearMateriaM($tablaBD, $datosC);
 
 				if($resultado == true){
-                    if($id_carrera !=null){
-                        echo '<script>
-
-                        window.location = "http://localhost/Sistema/crear-materias/'.$id_carrera.'";
-                        </script>';
-
-                    }else{
                         echo '<script>
 
                         window.location = "http://localhost/Sistema/catalogo";
+                       
                         </script>';
-                    }
-					
-
-				}else{
-                    echo '
-                    <h1>Ocurrio un Fatal Error</h1>
-                    ';
-                }
+				}
 
 		}
 
@@ -56,7 +29,7 @@ class MateriasC{
        return $resultado;
     }
 
-    public function EliminarMateriaC(){
+    public function EliminarMateriaC($id_carrera){
         if(isset($_GET["Mid"])){
 
 			$tablaBD = "materias";
@@ -67,10 +40,23 @@ class MateriasC{
 			$resultado = MateriasM::EliminarMateriasM($tablaBD, $id);
 
 			if($resultado == true){
+                if($id_carrera ==null){
+                    echo '<script>
 
+                    window.location = "http://localhost/Sistema/crear-materias";
+                   
+                    </script>';
+
+                }else{
+                    echo '<script>
+
+                    window.location = "http://localhost/Sistema/crear-materias/' . $id_carrera . '";
+                    </script>';
+                }
+                
                 echo '<script>
 
-                window.location = "http://localhost/Sistema/crear-materias/' . $Cid . '";
+            
                 </script>';
 
 			}

@@ -21,9 +21,11 @@ if ($_SESSION["rol"] == "Alumno" || $_SESSION["rol"] == "a_Industrial") {
         <br>
         <a href="http://localhost/Sistema/ImportarExcel/usuarios.php">
             <button class="btn btn-success " title="Importación masiva de usuarios desde excel">Importar usuarios de excel</button>
-        </a> 
-        <button class="btn btn-primary" data-toggle="modal" data-target="#CrearUsuario">Crear Nuevo Usuario</button>
-        <button class="btn btn-success " style="display:none" data-toggle="modal" data-target="#impExcel">Importar lista masiva de usuarios desde excel</button>
+        </a>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#CrearUsuario">Crear Nuevo Usuario</button>
+
+        <button type="button" class="btn btn-success " style="display:none" data-toggle="modal" data-target="#impExcel">Importar lista masiva de usuarios desde excel</button>
         <a href="http://localhost/Sistema/tcpdf/pdf/expUsuarios.php" target="blank">
             <button class="btn btn-danger ">Exportar tabla a PDF</button>
         </a>
@@ -33,157 +35,78 @@ if ($_SESSION["rol"] == "Alumno" || $_SESSION["rol"] == "a_Industrial") {
 
 
 
-        <h2>Filtrar datos en Tabla</h2>
-        <p>Filtra por Apellido, Nombres, Carreras o cualquier otro campo</p>
-        <input class="form-control" id="myInput" type="text" placeholder="Buscar..">
+        <br>
+
         <!-- id="myTable" -->
 
     </section> <br>
     <div class="box">
 
-
         <div class="box-header">
-            <ul class="nav nav-pills mb-3" role="tablist">
 
-                <?php
-                if ($_SESSION["rol"] == "Admin") {
-                    echo '
-                    <li class="nav-item active">
-                    <a class="nav-link " id="Alumnos_button" data-toggle="pill" href="#Alumnos" role="tab" aria-controls="Alumnos" aria-expanded="true">Alumnos</a>
+
+            <!-- Pills navs -->
+            <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active " id="ex3-tab-1" data-mdb-toggle="pill" href="#ex3-pills-1" role="tab" aria-controls="ex3-pills-1" aria-selected="true">
+                        Alumnos
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="AcesorAcademico_button" data-toggle="pill" href="#AcesorAcademico" role="tab" aria-controls="AcesorAcademico" aria-expanded="true">Acesor Academico</a>
+
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="ex3-tab-2" data-mdb-toggle="pill" href="#ex3-pills-2" role="tab" aria-controls="ex3-pills-2" aria-selected="false">
+                        Acesor Academico
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="AcesorIndustrial_button" data-toggle="pill" href="#AcesorIndustrial" role="tab" aria-controls="AcesorIndustrial" aria-expanded="true">Acesor Industrial</a>
+
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="ex3-tab-3" data-mdb-toggle="pill" href="#ex3-pills-3" role="tab" aria-controls="ex3-pills-3" aria-selected="false">
+                        Acesor Industrial
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="JefeCarrera_button" data-toggle="pill" href="#JefeCarrera" role="tab" aria-controls="JefeCarrera" aria-expanded="true">Jefé de Carrera</a>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="ex3-tab-4" data-mdb-toggle="pill" href="#ex3-pills-4" role="tab" aria-controls="ex3-pills-4" aria-selected="false">
+                        Jefe de Carrera
+                    </a>
                 </li>
-                    <li class="nav-item">
-                    <a class="nav-link" id="Admin_button" data-toggle="pill" href="#Admin" role="tab" aria-controls="Admin" aria-expanded="true">Administrador</a>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="ex3-tab-5" data-mdb-toggle="pill" href="#ex3-pills-5" role="tab" aria-controls="ex3-pills-5" aria-selected="false">
+                        Administrador
+                    </a>
                 </li>
-                    ';
-                } else if ($_SESSION["rol"] == "Jefe") {
-                    echo '
-                    <li class="nav-item active">
-                    <a class="nav-link " id="Alumnos_button" data-toggle="pill" href="#Alumnos" role="tab" aria-controls="Alumnos" aria-expanded="true">Alumnos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="AcesorAcademico_button" data-toggle="pill" href="#AcesorAcademico" role="tab" aria-controls="AcesorAcademico" aria-expanded="true">Acesor Academico</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="AcesorIndustrial_button" data-toggle="pill" href="#AcesorIndustrial" role="tab" aria-controls="AcesorIndustrial" aria-expanded="true">Acesor Industrial</a>
-                </li>';
-                } else if ($_SESSION["rol"] == "a_Academico" || $_SESSION["rol"] == "a_Industrial") {
-                    echo '
-                    <li class="nav-item active">
-                    <a class="nav-link " id="Alumnos_button" data-toggle="pill" href="#Alumnos" role="tab" aria-controls="Alumnos" aria-expanded="true">Alumnos</a>
-                </li>
-                ';
-                }
-                ?>
             </ul>
-        </div>
+            <!-- Pills navs -->
 
 
 
-        <div class="box content">
-            <div class="tab-content">
+            <!-- Pills content -->
+            <div class="tab-content" id="ex2-content">
+                <div class="tab-pane fade show active" id="ex3-pills-1" role="tabpanel" aria-labelledby="ex3-tab-1">
+                    <div class="table-responsive">
+                        <table class=" table align-middle table-hover table-responsive T">
 
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Apellido</th>
+                                    <th>Nombres</th>
+                                    <th>Carreras</th>
+                                    <th>Matricula</th>
+                                    <th>tipo</th>
+                                    <th>Correo</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
 
-                <div class="tab-pane fade active in" id="Alumnos" role="presentation" aria-labelledby="Alumnos_button">
-                    <div role=" tabpanel" class="tab-pane">
-                        <section class="content">
-
-
-                            <table class="table table-bordered table-hover table-striped T">
-
-                                <thead>
-                                    <tr>
-                                        <th>Apellido</th>
-                                        <th>Nombres</th>
-                                        <th>Carreras</th>
-                                        <th>Matricula</th>
-                                        <th>tipo</th>
-                                        <th>Correo</th>
-                                        <!--<th>Contraseña</th>
-                                        
-                                        <th>telefono</th>
-                                        <th>Direccion</th>
-                                        <th>Correo</th>
-                                        <th>Rol</th>-->
-                                        <th>Detalles</th>
-                                        <th>Editar / Borrar</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody id="myTable">
-                                    <?php
-                                    $columna = null;
-                                    $valor = null;
-                                    $resultado = UsuariosC::VerUsuariosC($columna, $valor);
-                                    foreach ($resultado as $key => $value) {
-                                        if ($value["rol"] == "Alumno") {
-                                            if ($value["a_academico"] == "" || $value["a_academico"] == $_SESSION["nombre"]) {
-                                                if ($value["id_carrera"] == $_SESSION["id_carrera"]) {
-                                                    $columnaC = "id";
-                                                    $valorC = $value["id_carrera"];
-
-                                                    $carrera = CarrerasC::verCarreraC($columnaC, $valorC);
-
-                                                    echo '
-                                                    <tr>
-                                                    <td>' . $value["apellido"] . '</td>
-                                                    <td>' . $value["nombre"] . '</td>';
-
-                                                    if ($value["id_carrera"] == 0 && $value["rol"] == "Admin") {
-                                                        echo ' <th style="color: blue">Administrador</th>';
-                                                    } else {
-
-                                                        echo '
-                                                        <td>' . $carrera["nombre"] . '</td>
-                                                    
-                                                        ';
-                                                    }
-                                                    echo '
-                                                <td>' . $value["matricula"] . '</td>
-                                               
-                                                <td>' . $value["tipo"] . '</td>
-    
-                                                <td>' . $value["correo"] . '</td>';
-
-
-                                                    echo '
-    
-                                                <td>
-                                                        
-                                                <div class="btn-grup">
-                                                    
-                                                    
-                                                    <a href="detalles-usuario/' . $value["id_carrera"] . '/' . $value["matricula"] . '" type="button" class="btn btn-default">Ver detalles
-                                                    </a>                                                
-    
-                                                </div>
-    
-                                                    </td>
-                                                            <td>
-                                                                
-                                                                <div class="btn-grup">
-                                                                    
-                                                                <a href="Editar-usuario/' . $value["id_carrera"] . '/' . $value["matricula"] . '" type="button" class="btn btn-success">Editar
-                                                                </a>   
-            
-                                                                    <button class="btn btn-danger EliminarUsuario" Uid="' . $value["id"] . '">Borrar</button>
-            
-                                                                </div>
-            
-                                                            </td>
-            
-                                                    </tr>';
-                                                }
-                                            }
-                                            if($_SESSION["rol"]=="Admin"){
+                            <tbody id="myTable">
+                                <?php
+                                $columna = null;
+                                $valor = null;
+                                $resultado = UsuariosC::VerUsuariosC($columna, $valor);
+                                foreach ($resultado as $key => $value) {
+                                    if ($value["rol"] == "Alumno") {
+                                        if ($value["a_academico"] == "" || $value["a_academico"] == $_SESSION["nombre"]) {
+                                            if ($value["id_carrera"] == $_SESSION["id_carrera"]) {
                                                 $columnaC = "id";
                                                 $valorC = $value["id_carrera"];
 
@@ -191,8 +114,8 @@ if ($_SESSION["rol"] == "Alumno" || $_SESSION["rol"] == "a_Industrial") {
 
                                                 echo '
                                                 <tr>
-                                                <td>' . $value["apellido"] . '</td>
-                                                <td>' . $value["nombre"] . '</td>';
+                                                    <td>' . $value["apellido"] . '</td>
+                                                    <td>' . $value["nombre"] . '</td>';
 
                                                 if ($value["id_carrera"] == 0 && $value["rol"] == "Admin") {
                                                     echo ' <th style="color: blue">Administrador</th>';
@@ -200,100 +123,49 @@ if ($_SESSION["rol"] == "Alumno" || $_SESSION["rol"] == "a_Industrial") {
 
                                                     echo '
                                                     <td>' . $carrera["nombre"] . '</td>
-                                                
+
                                                     ';
                                                 }
                                                 echo '
-                                            <td>' . $value["matricula"] . '</td>
-                                           
-                                            <td>' . $value["tipo"] . '</td>
+                                                    <td>' . $value["matricula"] . '</td>
 
-                                            <td>' . $value["correo"] . '</td>';
+                                                    <td>' . $value["tipo"] . '</td>
+
+                                                    <td>' . $value["correo"] . '</td>';
 
 
-                                                echo '
+                                                    echo '
 
-                                            <td>
-                                                    
-                                            <div class="btn-grup">
-                                                
-                                                
-                                                <a href="detalles-usuario/' . $value["id_carrera"] . '/' . $value["matricula"] . '" type="button" class="btn btn-default">Ver detalles
-                                                </a>                                                
+                                                    <td>
 
-                                            </div>
+                                                        <div class="btn-group">
+                                                        <a href="detalles-usuario/' . $value["id_carrera"] . '/' . $value["matricula"] . '" type="button" class="btn btn-info btn-sm px-3 ">Detalles</a>    
+                                                        </div>
 
-                                                </td>
-                                                        <td>
+                                                    </td>
+                                                    <td>
+                                                        
+                                                        <div class="btn-group">
                                                             
-                                                            <div class="btn-grup">
-                                                                
-                                                            <a href="Editar-usuario/' . $value["id_carrera"] . '/' . $value["matricula"] . '" type="button" class="btn btn-success">Editar
-                                                            </a>   
-        
-                                                                <button class="btn btn-danger EliminarUsuario" Uid="' . $value["id"] . '">Borrar</button>
-        
-                                                            </div>
-        
-                                                        </td>
-        
+                                                        <a href="Editar-usuario/' . $value["id_carrera"] . '/' . $value["matricula"] . '" type="button" class="btn btn-success btn-sm px-3 "><i class="fas fa-pen-alt"></i> </a>   
+
+                                                        <button class="btn btn-danger btn-sm px-3 EliminarUsuario" Uid="' . $value["id"] . '"><i class="fas fa-times"></i></button>
+
+                                                        </div>
+
+                                                    </td>
+
                                                 </tr>';
                                             }
                                         }
-                                    }
-
-                                    ?>
-
-                                </tbody>
-
-                            </table>
-
-
-
-                        </section>
-                    </div>
-
-                </div>
-
-                <div class="tab-pane fade " id="AcesorIndustrial" role="presentation" aria-labelledby="AcesorIndustrial_button">
-                    <div role=" tabpanel" class="tab-pane">
-                        <section class="content">
-
-                            <table class="table table-bordered table-hover table-striped T">
-
-                                <thead>
-                                    <tr>
-                                        <th>Apellido</th>
-                                        <th>Nombres</th>
-                                        <th>Carreras</th>
-                                        <th>Matricula</th>
-
-                                        <th>Correo</th>
-                                        <th>Contraseña</th>
-                                        <!--<th>tipo</th>
-                                        <th>telefono</th>
-                                        <th>Direccion</th>
-                                        <th>Correo</th>-->
-                                        <th>Rol</th>
-                                        <th>Editar / Borrar</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody id="myTable">
-                                    <?php
-                                    $columna = null;
-                                    $valor = null;
-                                    $resultado = UsuariosC::VerUsuariosC($columna, $valor);
-                                    foreach ($resultado as $key => $value) {
-                                        if ($value["rol"] == "a_Industrial") {
-
+                                        if ($_SESSION["rol"] == "Admin") {
                                             $columnaC = "id";
                                             $valorC = $value["id_carrera"];
 
                                             $carrera = CarrerasC::verCarreraC($columnaC, $valorC);
 
                                             echo '
-                                                    <tr>
+                                                <tr>
                                                     <td>' . $value["apellido"] . '</td>
                                                     <td>' . $value["nombre"] . '</td>';
 
@@ -302,46 +174,34 @@ if ($_SESSION["rol"] == "Alumno" || $_SESSION["rol"] == "a_Industrial") {
                                             } else {
 
                                                 echo '
-                                                        <td>' . $carrera["nombre"] . '</td>
-                                                    
-                                                        ';
+                                                    <td>' . $carrera["nombre"] . '</td>
+
+                                                    ';
                                             }
                                             echo '
                                                     <td>' . $value["matricula"] . '</td>
-                                               
+
+                                                    <td>' . $value["tipo"] . '</td>
 
                                                     <td>' . $value["correo"] . '</td>';
-                                            if ($_SESSION["rol"] != "Admin") {
-                                                echo ' <td> ***** </td>';
-                                            } else {
-                                                echo ' <td>' . $value["clave"] . '</td>';
-                                            }
-                                            if ($value["rol"] == "a_Academico") {
-                                                echo ' <th style="color: green">' . $value["rol"] . '</th>';
-                                            } else {
-                                                if ($value["rol"] == "a_Industrial") {
-                                                    echo ' <th style="color: purpuple">' . $value["rol"] . '</th>';
-                                                } else {
 
-                                                    if ($value["rol"] == "Admin") {
-                                                        echo ' <th style="color: blue">' . $value["rol"] . '</th>';
-                                                    } else {
 
-                                                        echo '
-                                                                <td>' . $value["rol"] . '</td>
-                                                            ';
-                                                    }
-                                                }
-                                            }
                                             echo '
-                                          
+
+                                                    <td>
+
+                                                        <div class="btn-group">
+                                                        <a href="detalles-usuario/' . $value["id_carrera"] . '/' . $value["matricula"] . '" type="button" class="btn btn-info btn-sm px-3 ">Detalles</a>    
+                                                        </div>
+
+                                                    </td>
                                                     <td>
                                                         
-                                                        <div class="btn-grup">
+                                                        <div class="btn-group">
                                                             
-                                                        <a href="Editar-usuario/' . $value["id_carrera"] . '/' . $value["matricula"] . '" type="button" class="btn btn-success">Editar
-                                                        </a>
-                                                            <button class="btn btn-dark EliminarUsuario" Uid="' . $value["id"] . '">Borrar</button>
+                                                        <a href="Editar-usuario/' . $value["id_carrera"] . '/' . $value["matricula"] . '" type="button" class="btn btn-success btn-sm px-3 "><i class="fas fa-pen-alt"></i> </a>   
+
+                                                        <button class="btn btn-danger btn-sm px-3 EliminarUsuario" Uid="' . $value["id"] . '"><i class="fas fa-times"></i></button>
 
                                                         </div>
 
@@ -350,350 +210,421 @@ if ($_SESSION["rol"] == "Alumno" || $_SESSION["rol"] == "a_Industrial") {
                                                 </tr>';
                                         }
                                     }
+                                }
 
-                                    ?>
+                                ?>
 
-                                </tbody>
+                            </tbody>
 
-                            </table>
-
-                        </section>
+                        </table>
                     </div>
 
                 </div>
+                <div class="tab-pane fade" id="ex3-pills-2" role="tabpanel" aria-labelledby="ex3-tab-2">
+                <table class=" table align-middle table-hover table-responsive T">
 
-                <div class="tab-pane fade" id="Admin" role="presentation" aria-labelledby="Admin_button">
+                    <thead>
+                        <tr>
+                            <th>Apellido</th>
+                            <th>Nombres</th>
+                            <th>Carreras</th>
+                            <th>Matricula</th>
+                            <th>Correo</th>
+                            <th>Rol</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
 
-                    <div role="tabpanel" class="tab-pane" id="">
-                        <section class="content">
+                    <tbody id="myTable">
+                        <?php
+                        $columna = null;
+                        $valor = null;
+                        $resultado = UsuariosC::VerUsuariosC($columna, $valor);
+                        foreach ($resultado as $key => $value) {
+                            if ($value["rol"] == "a_Academico") {
 
+                                $columnaC = "id";
+                                $valorC = $value["id_carrera"];
 
-                            <table class="table table-bordered table-hover table-striped T">
+                                $carrera = CarrerasC::verCarreraC($columnaC, $valorC);
 
-                                <thead>
-                                    <tr>
-                                        <th>Apellido</th>
-                                        <th>Nombres</th>
-                                        <th>Carreras</th>
-                                        <th>Matricula</th>
-                                        <th>Correo</th>
-                                        <th>Contraseña</th>
-                                        <!--<th>tipo</th>
-                                        <th>telefono</th>
-                                        <th>Direccion</th>
-                                        <th>Correo</th>-->
-                                        <th>Rol</th>
-                                        <th>Detalles</th>
-                                        <th>Editar / Borrar</th>
-                                    </tr>
-                                </thead>
+                                echo '
+                                        <tr>
+                                        <td>' . $value["apellido"] . '</td>
+                                        <td>' . $value["nombre"] . '</td>';
 
-                                <tbody id="myTable">
-                                    <?php
-                                    $columna = null;
-                                    $valor = null;
-                                    $resultado = UsuariosC::VerUsuariosC($columna, $valor);
-                                    foreach ($resultado as $key => $value) {
+                                if ($value["id_carrera"] == 0 && $value["rol"] == "Admin") {
+                                    echo ' <th style="color: blue">Administrador</th>';
+                                } else {
+
+                                    echo '
+                                        <td>' . $carrera["nombre"] . '</td>
+                                    
+                                        ';
+                                }
+                                echo '
+                                    <td>' . $value["matricula"] . '</td>
+                                    ';
+                            
+                                echo '
+                                    <td>' . $value["correo"] . '</td>';
+
+                                if ($value["rol"] == "a_Academico") {
+                                    echo ' <th style="color: green">' . $value["rol"] . '</th>';
+                                } else {
+                                    if ($value["rol"] == "a_Industrial") {
+                                        echo ' <th style="color: purpuple">' . $value["rol"] . '</th>';
+                                    } else {
+
                                         if ($value["rol"] == "Admin") {
-
-                                            $columnaC = "id";
-                                            $valorC = $value["id_carrera"];
-
-                                            $carrera = CarrerasC::verCarreraC($columnaC, $valorC);
+                                            echo ' <th style="color: blue">' . $value["rol"] . '</th>';
+                                        } else {
 
                                             echo '
-                                                                        <tr>
-                                                                        <td>' . $value["apellido"] . '</td>
-                                                                        <td>' . $value["nombre"] . '</td>';
-
-                                            if ($value["id_carrera"] == 0 && $value["rol"] == "Admin") {
-                                                echo ' <th style="color: blue">Administrador</th>';
-                                            } else {
-
-                                                echo '
-                                                                            <td>' . $carrera["nombre"] . '</td>
-                                                                        
-                                                                            ';
-                                            }
-                                            echo '
-                                                                        <td>' . $value["matricula"] . '</td>
-                                                                      
-                                                                        <td>' . $value["correo"] . '</td>';
-                                            if ($_SESSION["rol"] != "Admin") {
-                                                echo ' <td> ***** </td>';
-                                            } else {
-                                                echo ' <td>' . $value["clave"] . '</td>';
-                                            }
-                                            if ($value["rol"] == "a_Academico") {
-                                                echo ' <th style="color: green">' . $value["rol"] . '</th>';
-                                            } else {
-                                                if ($value["rol"] == "a_Industrial") {
-                                                    echo ' <th style="color: purpuple">' . $value["rol"] . '</th>';
-                                                } else {
-
-                                                    if ($value["rol"] == "Admin") {
-                                                        echo ' <th style="color: blue">' . $value["rol"] . '</th>';
-                                                    } else {
-
-                                                        echo '
-                                                                                    <td>' . $value["rol"] . '</td>
-                                                                                    ';
-                                                    }
-                                                }
-                                            }
-                                            echo '
-
-
-                                                                        <td>
-                                                                            
-                                                                            <div class="btn-grup">
-                                                                                
-                                                                            <a href="Editar-usuario/' . $value["id_carrera"] . '/' . $value["matricula"] . '" type="button" class="btn btn-success">Editar
-                                                                            </a>
-                                                                                <button class="btn btn-dark EliminarUsuario" Uid="' . $value["id"] . '">Borrar</button>
-
-                                                                            </div>
-
-                                                                        </td>
-
-                                                                        </tr>';
+                                                <td>' . $value["rol"] . '</td>
+                                            ';
                                         }
                                     }
+                                }
+                                echo '
 
-                                    ?>
+                                <td>
 
-                                </tbody>
-                            </table>
-                        </section>
-                    </div>
-                </div>
+                                    <div class="btn-group">
+                                    <a href="detalles-usuario/' . $value["id_carrera"] . '/' . $value["matricula"] . '" type="button" class="btn btn-info btn-sm px-3 ">Detalles</a>    
+                                    </div>
 
-                <div class="tab-pane fade" id="AcesorAcademico" role="presentation" aria-labelledby="AcesorAcademico_button">
+                                </td>
+                                <td>
+                                    
+                                    <div class="btn-group">
+                                        
+                                    <a href="Editar-usuario/' . $value["id_carrera"] . '/' . $value["matricula"] . '" type="button" class="btn btn-success btn-sm px-3 "><i class="fas fa-pen-alt"></i> </a>   
 
-                    <div role="tabpanel" class="tab-pane" id="">
-                        <section class="content">
+                                    <button class="btn btn-danger btn-sm px-3 EliminarUsuario" Uid="' . $value["id"] . '"><i class="fas fa-times"></i></button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>';
+                            }
+                        }
+
+                        ?>
+
+                    </tbody>
+
+                </table>
+              </div>
 
 
-                            <table class="table table-bordered table-hover table-striped T">
+                <div class="tab-pane fade" id="ex3-pills-3" role="tabpanel" aria-labelledby="ex3-tab-3">
+                <table class=" table align-middle table-hover table-responsive T">
 
-                                <thead>
-                                    <tr>
-                                        <th>Apellido</th>
-                                        <th>Nombres</th>
-                                        <th>Carreras</th>
-                                        <th>Matricula</th>
-                                        <th>Contraseña</th>
-                                        <th>tipo</th>
-                                        <th>telefono</th>
-                                        <th>Direccion</th>
-                                        <th>Correo</th>
-                                        <th>Rol</th>
-                                        <th>Editar / Borrar</th>
-                                    </tr>
-                                </thead>
+                    <thead>
+                        <tr>
+                            <th>Apellido</th>
+                            <th>Nombres</th>
+                            <th>Carreras</th>
+                            <th>Matricula</th>
+                            <th>Correo</th>
+                            <th>Rol</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
 
-                                <tbody id="myTable">
-                                    <?php
-                                    $columna = null;
-                                    $valor = null;
-                                    $resultado = UsuariosC::VerUsuariosC($columna, $valor);
-                                    foreach ($resultado as $key => $value) {
-                                        if ($value["rol"] == "a_Academico") {
+                    <tbody id="myTable">
+                        <?php
+                        $columna = null;
+                        $valor = null;
+                        $resultado = UsuariosC::VerUsuariosC($columna, $valor);
+                        foreach ($resultado as $key => $value) {
+                            if ($value["rol"] == "a_Industrial") {
 
-                                            $columnaC = "id";
-                                            $valorC = $value["id_carrera"];
+                                $columnaC = "id";
+                                $valorC = $value["id_carrera"];
 
-                                            $carrera = CarrerasC::verCarreraC($columnaC, $valorC);
+                                $carrera = CarrerasC::verCarreraC($columnaC, $valorC);
+
+                                echo '
+                                        <tr>
+                                        <td>' . $value["apellido"] . '</td>
+                                        <td>' . $value["nombre"] . '</td>';
+
+                                if ($value["id_carrera"] == 0 && $value["rol"] == "Admin") {
+                                    echo ' <th style="color: blue">Administrador</th>';
+                                } else {
+
+                                    echo '
+                                            <td>' . $carrera["nombre"] . '</td>
+                                        
+                                            ';
+                                }
+                                echo '
+                                        <td>' . $value["matricula"] . '</td>
+                                
+
+                                        <td>' . $value["correo"] . '</td>';
+                                
+                                if ($value["rol"] == "a_Academico") {
+                                    echo ' <th style="color: green">' . $value["rol"] . '</th>';
+                                } else {
+                                    if ($value["rol"] == "a_Industrial") {
+                                        echo ' <th style="color: purpuple">' . $value["rol"] . '</th>';
+                                    } else {
+
+                                        if ($value["rol"] == "Admin") {
+                                            echo ' <th style="color: blue">' . $value["rol"] . '</th>';
+                                        } else {
 
                                             echo '
-                                                    <tr>
-                                                    <td>' . $value["apellido"] . '</td>
-                                                    <td>' . $value["nombre"] . '</td>';
-
-                                            if ($value["id_carrera"] == 0 && $value["rol"] == "Admin") {
-                                                echo ' <th style="color: blue">Administrador</th>';
-                                            } else {
-
-                                                echo '
-                                                    <td>' . $carrera["nombre"] . '</td>
-                                                
-                                                    ';
-                                            }
-                                            echo '
-                                                <td>' . $value["matricula"] . '</td>
+                                                    <td>' . $value["rol"] . '</td>
                                                 ';
-                                            if ($_SESSION["rol"] != "Admin") {
-                                                echo ' <td> ***** </td>';
-                                            } else {
-                                                echo ' <td>' . $value["clave"] . '</td>';
-                                            }
-                                            echo '
-                                                <td>' . $value["tipo"] . '</td>
-
-                                                <td>' . $value["telefono"] . '</td>
-                                                <td>' . $value["direccion"] . '</td>
-                                                <td>' . $value["correo"] . '</td>';
-
-                                            if ($value["rol"] == "a_Academico") {
-                                                echo ' <th style="color: green">' . $value["rol"] . '</th>';
-                                            } else {
-                                                if ($value["rol"] == "a_Industrial") {
-                                                    echo ' <th style="color: purpuple">' . $value["rol"] . '</th>';
-                                                } else {
-
-                                                    if ($value["rol"] == "Admin") {
-                                                        echo ' <th style="color: blue">' . $value["rol"] . '</th>';
-                                                    } else {
-
-                                                        echo '
-                                                            <td>' . $value["rol"] . '</td>
-                                                        ';
-                                                    }
-                                                }
-                                            }
-                                            echo '
-
+                                        }
+                                    }
+                                }
+                                echo '
 
                                             <td>
+
+                                                <div class="btn-group">
+                                                <a href="detalles-usuario/' . $value["id_carrera"] . '/' . $value["matricula"] . '" type="button" class="btn btn-info btn-sm px-3 ">Detalles</a>    
+                                                </div>
+
+                                            </td>
+                                            <td>
                                                 
-                                                <div class="btn-grup">
+                                                <div class="btn-group">
                                                     
-                                                <a href="Editar-usuario/' . $value["id_carrera"] . '/' . $value["matricula"] . '" type="button" class="btn btn-success">Editar
-                                                </a>
-                                                    <button class="btn btn-dark EliminarUsuario" Uid="' . $value["id"] . '">Borrar</button>
+                                                <a href="Editar-usuario/' . $value["id_carrera"] . '/' . $value["matricula"] . '" type="button" class="btn btn-success btn-sm px-3 "><i class="fas fa-pen-alt"></i> </a>   
+
+                                                <button class="btn btn-danger btn-sm px-3 EliminarUsuario" Uid="' . $value["id"] . '"><i class="fas fa-times"></i></button>
 
                                                 </div>
 
                                             </td>
 
-                                            </tr>';
-                                        }
-                                    }
+                                        </tr>';
+                            }
+                        }
 
-                                    ?>
+                        ?>
 
-                                </tbody>
+                    </tbody>
 
-                            </table>
-
-
-
-                        </section>
-                    </div>
+                </table>
                 </div>
 
-                <div class="tab-pane fade" id="JefeCarrera" role="presentation" aria-labelledby="JefeCarrera_button">
+                <div class="tab-pane fade" id="ex3-pills-4" role="tabpanel" aria-labelledby="ex3-tab-4">
+                <table class=" table align-middle table-hover table-responsive T">
 
-                    <div role="tabpanel" class="tab-pane" id="">
-                        <section class="content">
+                    <thead>
+                        <tr>
+                            <th>Apellido</th>
+                            <th>Nombres</th>
+                            <th>Carreras</th>
+                            <th>Matricula</th>
+                            <th>Correo</th>
+                            <th>Rol</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
 
+                    <tbody id="myTable">
+                        <?php
+                        $columna = null;
+                        $valor = null;
+                        $resultado = UsuariosC::VerUsuariosC($columna, $valor);
+                        foreach ($resultado as $key => $value) {
+                            if ($value["rol"] == "Jefe") {
 
-                            <table class="table table-bordered table-hover table-striped T">
+                                $columnaC = "id";
+                                $valorC = $value["id_carrera"];
 
-                                <thead>
-                                    <tr>
-                                        <th>Apellido</th>
-                                        <th>Nombres</th>
-                                        <th>Carreras</th>
-                                        <th>Matricula</th>
-                                        <th>Contraseña</th>
-                                        <th>telefono</th>
-                                        <th>Direccion</th>
-                                        <th>Correo</th>
-                                        <th>Rol</th>
-                                        <th>Editar / Borrar</th>
-                                    </tr>
-                                </thead>
+                                $carrera = CarrerasC::verCarreraC($columnaC, $valorC);
 
-                                <tbody id="myTable">
-                                    <?php
-                                    $columna = null;
-                                    $valor = null;
-                                    $resultado = UsuariosC::VerUsuariosC($columna, $valor);
-                                    foreach ($resultado as $key => $value) {
-                                        if ($value["rol"] == "Jefe") {
+                                echo '
+                            <tr>
+                            <td>' . $value["apellido"] . '</td>
+                            <td>' . $value["nombre"] . '</td>';
 
-                                            $columnaC = "id";
-                                            $valorC = $value["id_carrera"];
+                                if ($value["id_carrera"] == 0 && $value["rol"] == "Admin") {
+                                    echo ' <th style="color: blue">Administrador</th>';
+                                } else {
 
-                                            $carrera = CarrerasC::verCarreraC($columnaC, $valorC);
-
-                                            echo '
-                                        <tr>
-                                        <td>' . $value["apellido"] . '</td>
-                                        <td>' . $value["nombre"] . '</td>';
-
-                                            if ($value["id_carrera"] == 0 && $value["rol"] == "Admin") {
-                                                echo ' <th style="color: blue">Administrador</th>';
-                                            } else {
-
-                                                echo '
-                                            <td>' . $carrera["nombre"] . '</td>
-                                        
-                                            ';
-                                            }
-                                            echo '
-                                        <td>' . $value["matricula"] . '</td>';
-                                            if ($_SESSION["rol"] != "Admin") {
-                                                echo ' <td> ***** </td>';
-                                            } else {
-                                                echo ' <td>' . $value["clave"] . '</td>';
-                                            }
-                                            echo '
-                                        <td>' . $value["telefono"] . '</td>
-                                        <td>' . $value["direccion"] . '</td>
-                                        <td>' . $value["correo"] . '</td>';
-
-                                            if ($value["rol"] == "a_Academico") {
-                                                echo ' <th style="color: green">' . $value["rol"] . '</th>';
-                                            } else {
-                                                if ($value["rol"] == "a_Industrial") {
-                                                    echo ' <th style="color: purpuple">' . $value["rol"] . '</th>';
-                                                } else {
-
-                                                    if ($value["rol"] == "Admin") {
-                                                        echo ' <th style="color: blue">' . $value["rol"] . '</th>';
-                                                    } else {
-
-                                                        echo '
-                                        <td>' . $value["rol"] . '</td>
-                                    ';
-                                                    }
-                                                }
-                                            }
-                                            echo '
-
-
-                        <td>
+                                    echo '
+                                <td>' . $carrera["nombre"] . '</td>
                             
-                            <div class="btn-grup">
+                                ';
+                                }
+                                echo '
+                            <td>' . $value["matricula"] . '</td>';
                                 
-                            <a href="Editar-usuario/' . $value["id_carrera"] . '/' . $value["matricula"] . '" type="button" class="btn btn-success">Editar
-                            </a>
-                                <button class="btn btn-dark EliminarUsuario" Uid="' . $value["id"] . '">Borrar</button>
+                                echo '
+                            <td>' . $value["correo"] . '</td>';
 
-                            </div>
+                                if ($value["rol"] == "a_Academico") {
+                                    echo ' <th style="color: green">' . $value["rol"] . '</th>';
+                                } else {
+                                    if ($value["rol"] == "a_Industrial") {
+                                        echo ' <th style="color: purpuple">' . $value["rol"] . '</th>';
+                                    } else {
 
-                        </td>
+                                        if ($value["rol"] == "Admin") {
+                                            echo ' <th style="color: blue">' . $value["rol"] . '</th>';
+                                        } else {
 
-                        </tr>';
+                                            echo '
+                            <td>' . $value["rol"] . '</td>
+                        ';
                                         }
                                     }
+                                }
+                                echo '
 
-                                    ?>
+                                <td>
 
-                                </tbody>
+                                    <div class="btn-group">
+                                    <a href="detalles-usuario/' . $value["id_carrera"] . '/' . $value["matricula"] . '" type="button" class="btn btn-info btn-sm px-3 ">Detalles</a>    
+                                    </div>
 
-                            </table>
+                                </td>
+                                <td>
+                                    
+                                    <div class="btn-group">
+                                        
+                                    <a href="Editar-usuario/' . $value["id_carrera"] . '/' . $value["matricula"] . '" type="button" class="btn btn-success btn-sm px-3 "><i class="fas fa-pen-alt"></i> </a>   
 
+                                    <button class="btn btn-danger btn-sm px-3 EliminarUsuario" Uid="' . $value["id"] . '"><i class="fas fa-times"></i></button>
 
+                                    </div>
 
-                        </section>
-                    </div>
+                                </td>
+
+                            </tr>';
+                            }
+                        }
+
+                        ?>
+
+                    </tbody>
+
+                </table>
                 </div>
 
+                <div class="tab-pane fade" id="ex3-pills-5" role="tabpanel" aria-labelledby="ex3-tab-5">
+                <table class=" table align-middle table-hover table-responsive T">
+
+                    <thead>
+                        <tr>
+                            <th>Apellido</th>
+                            <th>Nombres</th>
+                            <th>Carreras</th>
+                            <th>Matricula</th>
+                            <th>Rol</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="myTable">
+                        <?php
+                        $columna = null;
+                        $valor = null;
+                        $resultado = UsuariosC::VerUsuariosC($columna, $valor);
+                        foreach ($resultado as $key => $value) {
+                            if ($value["rol"] == "Admin") {
+
+                                $columnaC = "id";
+                                $valorC = $value["id_carrera"];
+
+                                $carrera = CarrerasC::verCarreraC($columnaC, $valorC);
+
+                                echo '
+                                                            <tr>
+                                                            <td>' . $value["apellido"] . '</td>
+                                                            <td>' . $value["nombre"] . '</td>';
+
+                                if ($value["id_carrera"] == 0 && $value["rol"] == "Admin") {
+                                    echo ' <th style="color: blue">Administrador</th>';
+                                } else {
+
+                                    echo '
+                                                                <td>' . $carrera["nombre"] . '</td>
+                                                            
+                                                                ';
+                                }
+                                echo '
+                                                            <td>' . $value["matricula"] . '</td>
+                                                        
+                                                        ';
+                            
+                                if ($value["rol"] == "a_Academico") {
+                                    echo ' <th style="color: green">' . $value["rol"] . '</th>';
+                                } else {
+                                    if ($value["rol"] == "a_Industrial") {
+                                        echo ' <th style="color: purpuple">' . $value["rol"] . '</th>';
+                                    } else {
+
+                                        if ($value["rol"] == "Admin") {
+                                            echo ' <th style="color: blue">' . $value["rol"] . '</th>';
+                                        } else {
+
+                                            echo '
+                                                                        <td>' . $value["rol"] . '</td>
+                                                                        ';
+                                        }
+                                    }
+                                }
+                            echo '
+
+                                                                        <td>
+
+                                                                            <div class="btn-group">
+                                                                            <a href="detalles-usuario/' . $value["id_carrera"] . '/' . $value["matricula"] . '" type="button" class="btn btn-info btn-sm px-3 ">Detalles</a>    
+                                                                            </div>
+
+                                                                        </td>
+                                                                        <td>
+                                                                            
+                                                                            <div class="btn-group">
+                                                                                
+                                                                            <a href="Editar-usuario/' . $value["id_carrera"] . '/' . $value["matricula"] . '" type="button" class="btn btn-success btn-sm px-3 "><i class="fas fa-pen-alt"></i> </a>   
+
+                                                                            <button class="btn btn-danger btn-sm px-3 EliminarUsuario" Uid="' . $value["id"] . '"><i class="fas fa-times"></i></button>
+
+                                                                            </div>
+
+                                                                        </td>
+
+                                                                    </tr>';
+                            }
+                        }
+
+                        ?>
+
+                    </tbody>
+                </table>
+                </div>
 
             </div>
+            <!-- Pills content -->
+
+
+
+
+
+
+
+
+
+
+
+            
         </div>
 
     </div>
@@ -701,7 +632,6 @@ if ($_SESSION["rol"] == "Alumno" || $_SESSION["rol"] == "a_Industrial") {
 
 
     <!-- CREAR 
-    <option value="Jefe">Jefe de Carrera</option>
     
     -->
 
@@ -808,26 +738,24 @@ if ($_SESSION["rol"] == "Alumno" || $_SESSION["rol"] == "a_Industrial") {
                                 <select name="tipoU" class="form-control " id="" required>
                                     <option>Selecciona el tipo</option>
                                     <?php
+
                                     if ($_SESSION["rol"] != "Admin") {
                                         echo '
-                                
-                                <option value="Alumno">Alumno</option>
-                                ';
-                                    }
-                                    if ($_SESSION["rol"] == "Jefe") {
-                                        echo '
-                                <option value="a_Academico">Acesor academico</option>
-                                <option value="a_Industrial">Acesor Idustrial</option>
-                                ';
+        
+                                        <option value="Servicio_Social">Servicio Social</option>
+                                        <option value="Residencia_Profecional">Residencia Profecional</option>
+                                        ';
                                     } else {
                                         echo '
-                                        <option value="Admin">Administrador</option>
-                                        <option value="Alumno">Alumno</option>
+                                                <option value="Servicio_Social">Servicio Social</option>
+                                        <option value="Residencia_Profecional">Residencia Profecional</option>
+                                        <option value="root">Root</option>
                                         <option value="a_Academico">Acesor academico</option>
                                         <option value="a_Industrial">Acesor Idustrial</option>
                                         <option value="Jefe">Jefe de Carrera</option>
                                         ';
                                     }
+
                                     ?>
                                 </select>
                             </div>
@@ -841,6 +769,7 @@ if ($_SESSION["rol"] == "Alumno" || $_SESSION["rol"] == "a_Industrial") {
                     <?php
                     $crearUsuario = new UsuariosC();
                     $crearUsuario->CrearUsuarioC();
+
                     ?>
                 </form>
             </div>

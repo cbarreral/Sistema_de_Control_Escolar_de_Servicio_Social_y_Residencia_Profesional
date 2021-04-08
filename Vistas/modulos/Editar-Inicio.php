@@ -15,73 +15,134 @@ if ($_SESSION["rol"] != "Admin") {
         <div class="box">
             <div class="box-body">
 
-                <div class="row">
-                    <div class="col-md-6 col-xs-12">
+               
                         <?php
                         $columna = "id";
                         $valor = 1;
 
                         $resultado = AjustesC::VerAjustesC($columna, $valor);
-                        echo '
-                        <h2>Periodo Actual: ' . $resultado["periodo"] . ' </h2>
+                        if($resultado["periodo"]=="Enero - Mayo"){
+                            echo '
+                            <div class="alert alert-info">
+                             <h2>Periodo Actual: ' . $resultado["periodo"] . '  ' . $resultado["1_fecha_inicio"] . ' a ' . $resultado["1_fecha_fin"] . '</h2>
+                            </div>';
+                        }
+                        if($resultado["periodo"]=="Agosto - Diciembre"){
+                            echo '
+                            <div class="alert alert-success">
+                             <h2>Periodo Actual: ' . $resultado["periodo"] . '  ' . $resultado["2_fecha_inicio"] . ' a ' . $resultado["2_fecha_fin"] . '</h2>
+                            </div>';
+                        }
+                      echo'
+                <div class="row">
+                    <div class="col-md">
                         <form action="" method="post">
                             <button type="submit" class="btn btn-primary">1er Periodo</button>
-                            <input type="hidden" name="PeriodoA" value="Enero - Mayo" id="">';
-                            $periodo = new AjustesC();
-                            $periodo ->CambiarPeriodoC();
-                            //$valor = 1;
-echo'
+                            <input type="hidden" name="PeriodoA" class="form-control" value="Enero - Mayo" id="">';
+                        $periodo = new AjustesC();
+                        $periodo->CambiarPeriodoC();
+                        //$valor = 1;
+                        echo '
                         </form>
                         <br>
                         <form action="" method="post">
                             <button type="submit" class="btn btn-success">2do Periodo</button>
-                            <input type="hidden" name="PeriodoA" value="Agosto - Diciembre" id="">';
-                            $periodo = new AjustesC();
-                            $periodo ->CambiarPeriodoC();
-                           // $valor = 2;
-echo'
+                            <input type="hidden" name="PeriodoA" class="form-control" value="Agosto - Diciembre" id="">';
+                        $periodo = new AjustesC();
+                        $periodo->CambiarPeriodoC();
+                        // $valor = 2;
+                        echo '
 
                         </form>
-                        <br>
+                        <hr><br>
                         <form action="" method="post">
+                            
+
+                            <div class="row mb-4">
                             <h2>Periodo Ene-Mayo</h2>
-                            <h3>inicio</h3>
-                            <input type="text" class="input-lg" name="1_fecha_inicio" value="' . $resultado["1_fecha_inicio"] . ' " id="">
-                            <h3>fin</h3>
-                            <input type="text" class="input-lg" name="1_fecha_fin" value="' . $resultado["1_fecha_fin"] . ' " id="">
-                            <br>
+                                <div class="col">
+                                    <div class="form-outline"><label class="form-label" for="form3Example1">Inicio</label>
+                                        <input type="date" id="form3Example1" name="1_fecha_inicio" value="' . $resultado["1_fecha_inicio"] . ' " class="form-control" />
+                                        
+                                    </div>
+                                </div>
 
-                            <h2>Periodo Ago-Dic</h2>
-                            <h3>inicio</h3>
-                            <input type="text" class="input-lg" name="2_fecha_inicio" value="' . $resultado["2_fecha_inicio"] . ' " id="">
-                            <h3>fin</h3>
-                            <input type="text" class="input-lg" name="2_fecha_fin" value="' . $resultado["2_fecha_fin"] . ' " id="">
-                    </div>
-                    <div class="col-xs-12 col-md-6">
-                        <br>
-                        <h2>Fechas proximas de evaluaciones y entrega de reportes</h2>
-                        <h3>inicio</h3>
-                        <input type="text" class="input-lg" name="evaluacion_i" value="' . $resultado["evaluacion_i"] . ' " id="">
+                                <div class="col">
+                                    <div class="form-outline"><label class="form-label" for="form3Example2">Fin</label>
+                                        <input type="date" id="form3Example2" name="1_fecha_fin" value="' . $resultado["1_fecha_fin"] . ' " class="form-control" />
+                                        
+                                    </div>
+                                </div>
+                                <hr><br>
+                                <h2>Periodo Ago-Dic</h2>
 
-                        <h3>fin</h3>
-                        <input type="text" class="input-lg" name="evaluacion_f" value="' . $resultado["evaluacion_f"] . ' " id="">
-                        <br>
-                        <h2>Fechas Para inscribirce</h2>
-                        <h3>inicio</h3>
-                        <input type="text" class="input-lg" name="inscripciones_i" value="' . $resultado["inscripciones_i"] . ' " id="">
-                        <h3>fin</h3>
-                        <input type="text" class="input-lg" name="inscripciones_f" value="' . $resultado["inscripciones_f"] . ' " id="">
+                                <div class="col">
+                                <div class="form-outline"><label class="form-label" for="form3Example1">Inicio</label>
+                                    <input type="date" id="form3Example1" name="2_fecha_inicio" value="' . $resultado["2_fecha_inicio"] . ' " class="form-control" />
+                                    
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="form-outline"><label class="form-label" for="form3Example2">Fin</label>
+                                    <input type="date" id="form3Example2" name="2_fecha_fin" value="' . $resultado["2_fecha_fin"] . ' " class="form-control" />
+                                    
+                                </div>
+                            </div>
+
                     </div>
-    
+
+
+
+                            
+                           
                    
 
+                    <hr><br>
+                    <div class="row mb-4">
+                    <h2>Fechas proximas de evaluaciones y entrega de reportes</h2>
+                        <div class="col">
+                            <div class="form-outline"><label class="form-label" for="form3Example1">Inicio</label>
+                                <input type="date" id="form3Example1" name="evaluacion_i" value="' . $resultado["evaluacion_i"] . ' " class="form-control" />
+                                
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-outline"><label class="form-label" for="form3Example2">Fin</label>
+                                <input type="date" id="form3Example2" name="evaluacion_f" value="' . $resultado["evaluacion_f"] . ' " class="form-control" />
+                                
+                            </div>
+                        </div>
+                        <hr><br>
+                        <h2>Fechas Para inscribirce</h2>
+
+                        <div class="col">
+                        <div class="form-outline"><label class="form-label" for="form3Example1">Inicio</label>
+                            <input type="date" id="form3Example1"name="inscripciones_i" value="' . $resultado["inscripciones_i"] . ' " class="form-control" />
+                            
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="form-outline"><label class="form-label" for="form3Example2">Fin</label>
+                            <input type="date" id="form3Example2"name="inscripciones_f" value="' . $resultado["inscripciones_f"] . ' " class="form-control" />
+                            
+                        </div>
+                    </div>
+
+            </div>
+
+
                         <br><br>
-                        <h4>Guardar Cambios </h4>
+                       
                         <button type="submit" class="btn btn-success ">Guardar Cambios</button>
+                       
+                       
                         ';
 
                         $guardarAjustes = new AjustesC();
-                        $guardarAjustes ->ActualizarAjustesC();
+                        $guardarAjustes->ActualizarAjustesC();
                         ?>
                         </form>
                     </div>

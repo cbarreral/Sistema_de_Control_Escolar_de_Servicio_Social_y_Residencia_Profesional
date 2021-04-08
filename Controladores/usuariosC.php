@@ -38,6 +38,8 @@ class UsuariosC
 
                     $_SESSION["id_carrera"] = $resultado["id_carrera"];
 
+                    $_SESSION["correo"]=$resultado["correo"];
+
 
                     echo '<script>
                 
@@ -109,10 +111,12 @@ class UsuariosC
 
             $resultado = UsuariosM::GuardarDatosM($tablaBD, $datosC);
             if ($resultado == true) {
+                
                 echo '<script>
                 
                 window.location = "http://localhost/Sistema/mis-datos";
                 </script>';
+
             }
         }
     }
@@ -135,9 +139,10 @@ class UsuariosC
 
             $resultado = UsuariosM::CrearUsuariosM($tablaBD, $datosC);
             if ($resultado == true) {
+              
                 echo '<script>
                 
-                window.location = "http://localhost/Sistema/usuarios";
+               window.location = "http://localhost/Sistema/usuarios";
                 </script>';
             }
         }

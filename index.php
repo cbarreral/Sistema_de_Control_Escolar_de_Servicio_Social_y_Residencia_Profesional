@@ -23,7 +23,16 @@ require_once "Modelos/documentosEcenM.php";
 require_once "Controladores/ConstanciaC.php";
 require_once "Modelos/ConstanciaM.php";
 
-require_once "PHPMAiler"
+require_once "Controladores/visitasC.php";
+require_once "Modelos/visitasM.php";
+
+require_once "Controladores/ChatC.php";
+require_once "Modelos/ChatM.php";
+
+require "PHPMailer/PHPMailer.php";
+require "PHPMailer/SMTP.php";
+require "PHPMailer/Exception.php";
+
 
 $plantilla = new Plantilla();
 $plantilla -> verPlantilla();

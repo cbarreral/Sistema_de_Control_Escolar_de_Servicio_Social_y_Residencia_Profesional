@@ -9,15 +9,15 @@ session_start();
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Sistema
-    </title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    </title>  <script src="http://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+     
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"> <!-- Tell the browser to be responsive to screen width --
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <!-- Font Awesome -->
+    <!-- Font Awesome --
     <link rel="stylesheet" href="http://localhost/Sistema/Vistas/bower_components/font-awesome/css/font-awesome.min.css">
-    <!-- Ionicons -->
+    <!-- Ionicons --
     <link rel="stylesheet" href="http://localhost/Sistema/Vistas/bower_components/Ionicons/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="http://localhost/Sistema/Vistas/dist/css/AdminLTE.min.css">
@@ -28,12 +28,33 @@ session_start();
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-  <script src="http://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+
   <script src="http://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
-    <!-- Google Font -->
+    <!-- Google Font --
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    -->
+    <!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"
+></script>
 </head>
 
 
@@ -73,6 +94,7 @@ session_start();
             if (
                 $url[0] == "inicio" ||
                 $url[0] == "salir" ||
+                $url[0]== "Obcervaciones"||
                 $url[0] == "mis-datos" ||
                 $url[0] == "carreras" ||
                 $url[0] == "Editar-Carrera" ||
@@ -100,13 +122,16 @@ session_start();
                 $url[0] == "Editar-usuario"||
                 $url[0] == "constancia-alumno"||
                 $url[0] == "calificaciones" ||
-                $url[0] == "solicitud-Constancia"
+                $url[0] == "solicitud-Constancia"||
+                $url[0] == "visitas"||
+                $url[0] == "Editar-Visitas"
+                
 
             ) {
 
                 include "modulos/" . $url[0] . ".php";
 
-                
+             
     echo'<script type="text/javascript">
     //  alert("'.$_SESSION["rol"].'");
     ;

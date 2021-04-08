@@ -3,7 +3,7 @@
         <ul class="sidebar-menu">
             <li>
 
-                <a href="http://localhost/Sistema/">
+                <a href="http://localhost/Sistema/inicio">
                     <i class="fa fa-home">
                         <samp>Inicio</samp>
                     </i>
@@ -48,7 +48,16 @@
                 <a href="http://localhost/Sistema/solicitud-Constancia">
                     <i class="fa fa-home">
                         <samp>Certificados</samp>
-                    </i> 
+                    </i>
+                </a>
+
+            </li>
+            <li>
+
+                <a href="http://localhost/Sistema/visitas">
+                    <i class="fa fa-home">
+                        <samp>Visitas a empresa</samp>
+                    </i>
                 </a>
 
             </li>

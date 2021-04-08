@@ -52,7 +52,7 @@ $(".T").on("click", ".EditarUsuario", function () {
             $("#carr").val(resultadoJS["id_carrera"]);
             
 
-            $("#aAcademico").val(resultadoJS["nombre"]);
+            $("#aAcademico").val(resultadoJS["nombre"]); 
             $("#aAcademico").hide();
         }
     })

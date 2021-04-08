@@ -1,8 +1,10 @@
 <div class="content-wrapper">
     <section class="content-header">
+        
+    <h2>Carpeta de archivos</h2>
         <?php
-        $promediototal =0;
-        $promedio=0;
+        $promediototal = 0;
+        $promedio = 0;
         $exp = explode("/", $_GET["url"]);
         $columna = "matricula";
         $valor = $exp[2];
@@ -11,25 +13,22 @@
         $columna = "id";
         $valor = $exp[1];
         $carrera = CarrerasC::verCarreraC($columna, $valor);
-        $inscto = MateriasC::VerInscripcionesMaterias2C("id_alumno",$estudiante["id"]);
-         if ($_SESSION["rol"] == "Alumno"&&$inscto!=null) {
+        $inscto = MateriasC::VerInscripcionesMaterias2C("id_alumno", $estudiante["id"]);
+        if ($_SESSION["rol"] == "Alumno" && $inscto != null) {
             echo '
-            
-         <button class="btn btn-info" data-toggle="modal" data-target="#SubirPDF">Subir Documento PDF</button>
+            <button  type="button"  class="btn btn-primary"  data-mdb-toggle="modal"  data-mdb-target="#SubirPDF">Subir PDF</button>
+         
             ';
-        }else{
-           if($_SESSION["rol"]=="Alumno"){
-            echo'<p class="alert alert-danger">No tienes permisos para subir documentos, Primero debes ser haceptado y ser inscrito a una empresa</p> ';
-           }
+        } else {
+            if ($_SESSION["rol"] == "Alumno") {
+                echo '<p class="alert alert-danger">No tienes permisos para subir documentos, Primero debes ser haceptado y ser inscrito a una empresa</p> ';
+            }
         }
-        
-        echo ' <a href="http://localhost/Sistema/detalles-usuario/' .$exp[1]. '/' .$exp[2]. '" type="button" class="btn btn-success">Ver Perfil</a>';
-        
-       
+
+        echo ' <a href="http://localhost/Sistema/detalles-usuario/' . $exp[1] . '/' . $exp[2] . '" type="button" class="btn btn-success">Ver Perfil</a>';
+
+
         ?>
-        <h2>Carpeta de archivos</h2>
-        <p>Filtra por Apellido, Nombres, Carrera o cualquier otro campo</p>
-        <input class="form-control" id="myInput" type="text" placeholder="Buscar..">
     </section>
     <section class="content">
 
@@ -39,13 +38,14 @@
         <div class="box">
             <div class="box-body">
                 <p class="text-center">Tabla de Documentos ecenciales</p>
-                <table class="table table-bordered table-hover table-striped">
+                <table class=" table align-middle table-hover table-responsive T">
                     <thead>
                         <tr>
                             <th>N°</th>
                             <th>Fecha</th>
                             <th>Nombre de documento</th>
                             <th>Documento PDF</th>
+                            <th>Obcervaciones</th>
                             <?php
                             if ($_SESSION["rol"] == "Alumno") {
                                 echo '
@@ -69,7 +69,7 @@
                             foreach ($documentosEcenciales as $key => $N) {
 
                                 echo '
-                                <tr>
+                            <tr>
                                 <td>' . $i . '</td>
                                 <td>' . $N["fecha"] . '</td>
                                 <td>' . $N["nombre"] . '</td>
@@ -77,23 +77,22 @@
                                  ';
                                 if ($_SESSION["rol"] == "Alumno") {
                                     echo '
-                                     <td>
-                                        
-                                       <div class="btn-group">
-                                       <a href="https://localhost/Sistema/verCarpeta/' . $exp[1] . '/' . $exp[2] . '/' . $N["id"] . '">
-                                            
-                                       <button class="btn btn-danger btn-sm pull-left"><i class="fa fa-delt"></i>Eliminar</button>
-
-                                   </a>
-                                  
-                               </div>
-    
+                                    <td>
+                                       <a href="https://localhost/Sistema/verCarpeta/' . $exp[1] . '/' . $exp[2] . '/' . $N["id"] . '">  
+                                         <button class="btn btn-danger btn-sm pull-left"><i class="fa fa-delt"></i>Eliminar</button>
+                                       </a>
                                     </td>
+
                                      ';
                                 }
 
                                 echo '
-                                </tr>';
+                                    <td>
+                                       <a href="https://localhost/Sistema/Obcervaciones/' . $exp[2] .'/' . $N["id"] .'">  
+                                         <button class="btn btn-primary btn-sm pull-left"><i class="fa fa-delt"></i>Observaciones</button>
+                                       </a>
+                                    </td>
+                            </tr>';
                             }
                         }
 
@@ -114,7 +113,7 @@
 
         <!-- Tabla de Reportes y evaluaciones -->
         <?php
-        if ($_SESSION["rol"] == "Alumno"&&$inscto!=null) {
+        if ($_SESSION["rol"] == "Alumno" && $inscto != null) {
             echo '
    <button class="btn btn-success" data-toggle="modal" data-target="#SubirReportesPDF">Subir Documento de reporte en PDF</button> <br><br>
         ';
@@ -174,30 +173,32 @@
                                     echo ' <td  data-placement="top" title="No se encontro un archivo PDF" style="color: red">No se adjunto un archivo PDF</td>';
                                 }
 
-                                $promedio =($N["nota_industrial"]+$N["nota_academico"]) ;
-                                $promediototal = $promediototal+($promedio/2);
+                                $promedio = ($N["nota_industrial"] + $N["nota_academico"]);
+                                $promediototal = $promediototal + ($promedio / 2);
                                 echo '
                                 <td>' . $N["nota_academico"] . '</td>
                                 <td>' . $N["nota_industrial"] . '</td>';
-                                if($N["revisadoJefe"]>=1){
-                                    echo'
+                                if ($N["revisadoJefe"] >= 1) {
+                                    echo '
                                     <td>Si</td>
                                     ';
-                                }else{
-                                    echo'
+                                } else {
+                                    echo '
                                     <td>No</td>
                                     ';
-                                }if($N["revisadoAdmin"]>=1){
-                                    echo'
+                                }
+                                if ($N["revisadoAdmin"] >= 1) {
+                                    echo '
                                     <td>Si</td>
                                     ';
-                                }else{
-                                    echo'
+                                } else {
+                                    echo '
                                     <td>No</td>
                                     ';
-                                }echo'
+                                }
+                                echo '
                                 
-                                <td>' .($promedio/2). '</td>
+                                <td>' . ($promedio / 2) . '</td>
                                     <td>
                                         
                                        <div class="btn-grup">
@@ -218,17 +219,16 @@
     
                                 </tr>
                                 ';
+                            }
 
+                            if ($promediototal == 0) {
+                                $total = 0;
+                            } else {
+                                $total = (($promediototal) / $i);
                             }
-                            
-                            if($promediototal==0) {
-                                $total =0;
-                            }else{
-                                $total =(($promediototal)/$i);
-                            }
-                            echo'<h2>Promedio Total: '.$total.'</h2> ';
+                            echo '<h2>Promedio Total: ' . $total . '</h2> ';
                         }
-                       
+
 
                         ?>
 

@@ -16,21 +16,11 @@
                 $id_carrera = $exp[2];
 
                 $materia = MateriasC::VerMaterias2C($columna, $valor);
-                if ($_SESSION["rol"] == "Admin") {
-
-                    echo '<a href="http://localhost/Sistema/crear-materias/' . ($exp[2]) . '">
-                    <button class="btn btn-primary"> Volver </button>
-                   </a>';
-                } else {
-                    echo '
-                        <a href="http://localhost/Sistema/catalogo">
-                         <button class="btn btn-primary"> Volver </button>
-                        </a>';
-                }
+               
                 echo '
-                    <br> <br>
-            <h2>Detalles de la empresa: </h2>
-            <h1>' .  $materia["nombre"] . '</h1>
+                    <br>
+            <h2>Horarios disponibles en ' .  $materia["nombre"] . '</h2>
+            
             ';
                 ?>
 
@@ -40,8 +30,8 @@
                             <?php
                             if ($_SESSION["rol"] == "Admin") {
                                 echo '
-                                <button class="btn btn-info btn-md" data-toggle="modal" data-target="#CrearComision">CrearDetalles</button>
-                                ';
+                                <button type="button" class="btn btn-info" data-mdb-toggle="modal" data-mdb-target="#CrearComision">Crear Horarios</button>
+                               ';
                             } else {
                                 echo '<div class="alert alert-success">No tienes permisos para editar</div> ';
                             }
@@ -50,13 +40,13 @@
 
                         </div>
                         <h2>Comisiones: </h2>
-                        <table class="table table-bordered table-hover table-striped T">
+                        <table class=" table align-middle table-hover table-responsive T">
                             <thead>
                                 <tr>
-                                    <th>Numero</th>
+                                    <th>Número</th>
                                     <th>Cantidad Máxima de Alumnos</th>
-                                    <th>horas</th>
-                                    <th>horarios</th>
+                                    <th>Horarios</th>
+                                    <th>Días</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -79,7 +69,7 @@
                                     </a>';
                                     if ($_SESSION["rol"] == "Admin") {
                                         echo '
-                                        <button class="btn btn-danger BorrarComision"Mid="' . $value["id"] . '"  Cid="' . $exp[1] . '">Borrar Comision</button>
+                                        <button class="btn btn-danger BorrarComision"Mid="' . $value["id"] . '"  Cid="' . $exp[1] . '">Borrar horario</button>
                                         ';
                                     }
                                     echo '
@@ -136,7 +126,7 @@
 
                     <div class="form-group">
 
-                        <h2>Horas:</h2>
+                        <h2>Horarios:</h2>
 
                         <input type="texto" class="form-control input-lg" name="horas" required="">
 
@@ -144,7 +134,7 @@
 
                     <div class="form-group">
 
-                        <h2>Horarios:</h2>
+                        <h2>Días:</h2>
 
                         <input type="text" class="form-control input-lg" name="horario" required="">
 
@@ -153,7 +143,7 @@
                 </div>
                 <div class="modal-footer">
 
-                    <button class="btn btn-primary" type="submit">Crear comision</button>
+                    <button class="btn btn-primary" type="submit">Crear horario</button>
 
                     <button class="btn btn-danger" type="button" data-dismiss="modal">Cancelar</button>
 
