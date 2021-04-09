@@ -1,11 +1,12 @@
 
 <div class="content-wrapper">
     <section class="content">
+    
         <div class="box">
             <div class="box-body">
-                <he>Constancia de alumno</he> 
+                
                 <?php
-                    $fecha = date("d-m-Y H:i:s");
+                    $fecha = date("d-m-Y h:m:s ");
                     $exp = explode("/",$_GET["url"]);
                    
                     $matricula = $exp[1];
@@ -13,17 +14,22 @@
                     if ($_SESSION["rol"]=="Alumno"){ 
                         $id_carrera = $exp[2];
                         $usuario = UsuariosC::VerUsuariosC("matricula",$matricula);
+                        $ins = MateriasC::VerInscripcionesMaterias2C("id_alumno",$usuario["id"]);
+                        $materia=MateriasC::VerMaterias2C("id",$ins["id_materia"]);
+
                     echo '
                     <form method="post">
-                        <h3>Alumno:'.$usuario["apellido"].' '.$usuario["nombre"].'</h3> ';
+                        <h2>Alumno:'.$usuario["apellido"].' '.$usuario["nombre"].'</h2> 
+                        <h4>Liberacion de la empresa '.$materia["nombre"].' </h4> 
+                        ';
 
                         $columna = "id";
-                        $valor = $id_carrera;
+                        
 
-                        $carrera = CarrerasC::verCarreraC($columna,$valor);
-                        echo' <h2>Carrera: '.$carrera["nombre"].'</h2> 
-                                <h3>Matricula: '.$matricula.'</h3> 
-                                <h4>Fecha actual: '.$fecha.'</h4> 
+                        $carrera = CarrerasC::verCarreraC($columna,$id_carrera);
+                        echo' <p>Carrera: '.$carrera["nombre"].'</p> 
+                                <p>Matricula: '.$matricula.'</p> 
+                                <p>Fecha actual: '.$fecha.'</p> 
                                 <input type="hidden" name="matricula" value="'.$matricula.'">
                                 <input type="hidden" name="id_carrera" value="'.$id_carrera.'">
                                 <input type="hidden" name="fecha" value="'.$fecha.'">
@@ -50,11 +56,6 @@
                 }
                 ?>
    
-        <?php
-        $promediototal =0;
-        $promedio=0;
-       
-        ?>
         
         
     <section class="content">
@@ -64,7 +65,7 @@
         <div class="box">
             <div class="box-body">
                 <p class="text-center">Constancia</p>
-                <table class="table table-bordered table-hover table-striped">
+                <table class=" table align-middle table-hover table-responsive T">
                     <thead>
                         <tr>
                             <th>N°</th>

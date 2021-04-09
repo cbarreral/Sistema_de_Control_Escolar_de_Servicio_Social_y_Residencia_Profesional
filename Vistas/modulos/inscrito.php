@@ -37,7 +37,7 @@
                        
                         </div>
                         <h2>Horarios: </h2>
-                        <table class="table table-bordered table-hover table-striped T">
+                        <table class=" table align-middle table-hover table-responsive T">
                             <thead>
                                 <tr>
                                     <th>Numero</th>

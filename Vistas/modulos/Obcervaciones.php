@@ -13,12 +13,13 @@
                 $documento = DocumentosEcenC::VerDocumentosEcenC("id",$idDocumento);
             }else if($tipo==2){
                 $documento = DocumentosEcenC::VerDocumentosRepC("id",$idDocumento);
+            }else if($tipo==3){
+                $documento = VisitasC::VerVisitasC("id",$idDocumento);
             }
            
-            
+             if($tipo<3){
             foreach ($documento as $key => $vdoc) {
-              
-               
+             
                 echo '
                 <div class="btn-group">
                 <a class="btn btn-primary" href="http://localhost/Sistema/verCarpeta/'.$Alumno["id_carrera"].'/'.$matricula.'"><i class="fas fa-arrow-left"></i> Volver</a>
@@ -36,7 +37,19 @@
                         </div>
                         ';
              
-                    }echo'
+                    }
+                }else{
+                    echo'
+                    <a class="btn btn-primary" href="http://localhost/Sistema/visitas/'.$Alumno["id_carrera"].'/'.$matricula.'"><i class="fas fa-arrow-left"></i> Volver</a>
+                   
+                    ';
+                    if($_SESSION["rol"]=="Alumno"){
+                        echo'
+                        <button  type="button"  class="btn btn-danger"  data-mdb-toggle="modal"  data-mdb-target="#SubirPDF">Subir Evidencia en PDF</button>
+                        ';
+                    }
+                }
+                echo'
                     <div class="p-2"></div>
                         <div class="p-2"> ';
                         $chat = ChatC::VerMensajes("id_doc",$idDocumento);
@@ -108,3 +121,37 @@
     </section>
 </div>
 
+<!-- SUBIR DOCUMENTOS ESENCIALES  -->
+
+
+<div class="modal fade" id="SubirPDF">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+
+            <form action="../../Controladores/subirPDF.php" enctype="multipart/form-data" enctype="multipart/form-data" class="content" method="post">
+
+                <?php echo '
+            <input type="hidden" name="id_materia" value="' . $exp[1] . '">
+                <input type="hidden" name="matricula" value="' . $exp[2] . '">
+                ';
+                ?>
+                <div class="form-group">
+
+                    <h2>PDF:</h2>
+
+                    <input type="file" class="file file-lg input-lg" name="PDF" id="PDF" required>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Subir PDF</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+                <?php
+                ?>
+            </form>
+
+        </div>
+    </div>
+</div>

@@ -6,26 +6,45 @@
                 <br>
                 <h2>Carpeta de alumno</h2>
                 <br>
-
-                <!-- Pills navs -->
                 <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+                <!-- Pills navs -->
+                    <?php
+                    if ($_SESSION["rol"] == "Alumno" && $_SESSION["tipo"] == "Servicio_Social" ) {
+                    echo '
+                
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active " id="ex3-tab-1" data-mdb-toggle="pill" href="#ex3-pills-1" role="tab" aria-controls="ex3-pills-1" aria-selected="true">
                             Servicio Social
                         </a>
-                    </li>
-
+                    </li>';}
+                    if ($_SESSION["rol"] == "Alumno" && $_SESSION["tipo"] == "Residencia_Profecional" ) {
+                        echo '
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" id="ex3-tab-2" data-mdb-toggle="pill" href="#ex3-pills-2" role="tab" aria-controls="ex3-pills-2" aria-selected="false">
                             Recidencia Profecional
                         </a>
                     </li>
-
+                    ';}
+                    if ($_SESSION["rol"] != "Alumno") {
+                        echo '
+                        <li class="nav-item" role="presentation">
+                        <a class="nav-link active " id="ex3-tab-1" data-mdb-toggle="pill" href="#ex3-pills-1" role="tab" aria-controls="ex3-pills-1" aria-selected="true">
+                            Servicio Social
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="ex3-tab-2" data-mdb-toggle="pill" href="#ex3-pills-2" role="tab" aria-controls="ex3-pills-2" aria-selected="false">
+                            Recidencia Profecional
+                        </a>
+                    </li>
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" id="ex3-tab-3" data-mdb-toggle="pill" href="#ex3-pills-3" role="tab" aria-controls="ex3-pills-3" aria-selected="false">
                             Alumnos Terminados
                         </a>
                     </li>
+    ';
+                    }
+                    ?>
 
                 </ul>
                 <!-- Pills navs -->
@@ -77,7 +96,7 @@
                                                             </td>';
                                                 if ($Constancia["estado"] == 2) {
                                                     echo '<td>
-                                                            <a href="http://localhost/Sistema/constancia-alumno/' . $value["matricula"] . '" >
+                                                            <a href="http://localhost/Sistema/constancia-alumno/' . $value["matricula"]  .'/'.$value["id_carrera"].'" >
                                                             <button class="btn btn-success" >Constancia</button>
                                                             </a>
                                                         </td>
@@ -97,12 +116,12 @@
                                                                 
                                                                 <td>
                                                                     <a href="http://localhost/Sistema/verCarpeta/' . $value["id_carrera"] . '/' . $value["matricula"] . '">
-                                                                        <button class="btn btn-info">Carpeta de archivos</button>
+                                                                        <button class="btn btn-info btn-rounded">Carpeta de archivos</button>
                                                                     </a>
                                                                 </td>';
                                                     if ($Constancia["estado"] == 2) {
                                                         echo '<td>
-                                                                <a href="http://localhost/Sistema/constancia-alumno/' . $value["matricula"] . '" >
+                                                                <a href="http://localhost/Sistema/constancia-alumno/' . $value["matricula"] . '/'.$value["id_carrera"].'" >
                                                                 <button class="btn btn-success" >Constancia</button>
                                                                 </a>
                                                             </td>
@@ -125,7 +144,7 @@
                                                                 </td>';
                                                     if ($Constancia["estado"] == 2) {
                                                         echo '<td>
-                                                                <a href="http://localhost/Sistema/constancia-alumno/' . $value["matricula"] . '" >
+                                                                <a href="http://localhost/Sistema/constancia-alumno/' . $value["matricula"] .  '/'.$value["id_carrera"].'" >
                                                                 <button class="btn btn-success" >Constancia</button>
                                                                 </a>
                                                             </td>
@@ -148,7 +167,7 @@
                                                                 </td>';
                                                     if ($Constancia["estado"] == 2) {
                                                         echo '<td>
-                                                                <a href="http://localhost/Sistema/constancia-alumno/' . $value["matricula"] . '" >
+                                                                <a href="http://localhost/Sistema/constancia-alumno/' . $value["matricula"] . '/'.$value["id_carrera"].'" >
                                                                 <button class="btn btn-success" >Constancia</button>
                                                                 </a>
                                                             </td>
@@ -172,14 +191,14 @@
                                                                 </td>';
                                                     if ($Constancia["estado"] == 2) {
                                                         echo '<td>
-                                                                <a href="http://localhost/Sistema/constancia-alumno/' . $value["matricula"] . '" >
+                                                                <a href="http://localhost/Sistema/constancia-alumno/' . $value["matricula"] .  '/'.$value["id_carrera"].'" >
                                                                 <button class="btn btn-success" >Constancia</button>
                                                                 </a>
                                                             </td>
                                                             </tr>  ';
                                                     }
-                                                    $suma = ($key + 1);
-                                                }
+                                                    
+                                                }$suma = ($key + 1);
                                             }
                                         }
                                     }
@@ -219,7 +238,7 @@
                                         $col = "id";
                                         $id_carrera = $value["id_carrera"];
                                         $carrera = CarrerasC::verCarreraC($col, $id_carrera);
-                                        if ($value["rol"] == "Alumno" && $value["tipo"] == "Residencia Profecional" || $value["rol"] == "Alumno" && $value["tipo"] == "Residencia_profecional") {
+                                        if ($value["rol"] == "Alumno" && $value["tipo"] == "Residencia_Profecional" || $value["rol"] == "Alumno" && $value["tipo"] == "Residencia_profecional") {
                                             if ($_SESSION["rol"] == "Alumno" && $_SESSION["matricula"] == $value["matricula"]) {
 
                                                 echo '
@@ -236,7 +255,7 @@
                                                         </td>';
                                                 if ($Constancia["estado"] == 2) {
                                                     echo '<td>
-                                                        <a href="http://localhost/Sistema/constancia-alumno/' . $value["matricula"] . '" >
+                                                        <a href="http://localhost/Sistema/constancia-alumno/' . $value["matricula"] .  '/'.$value["id_carrera"].'" >
                                                         <button class="btn btn-success" >Constancia</button>
                                                         </a>
                                                     </td>
@@ -260,7 +279,7 @@
                                                             </td>';
                                                 if ($Constancia["estado"] == 2) {
                                                     echo '<td>
-                                                            <a href="http://localhost/Sistema/constancia-alumno/' . $value["matricula"] . '" >
+                                                            <a href="http://localhost/Sistema/constancia-alumno/' . $value["matricula"] .  '/'.$value["id_carrera"].'" >
                                                             <button class="btn btn-success" >Constancia</button>
                                                             </a>
                                                         </td>
@@ -276,6 +295,7 @@
                             </table>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

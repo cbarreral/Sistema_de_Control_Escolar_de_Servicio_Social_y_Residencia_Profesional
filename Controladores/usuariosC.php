@@ -30,7 +30,7 @@ class UsuariosC
 
                     $_SESSION["nombre"] = $resultado["nombre"];
 
-                    $_SESSION["clave"] = $resultado["clave"];
+                    $_SESSION["tipo"] = $resultado["tipo"];
 
                     $_SESSION["apellido"] = $resultado["apellido"];
 
