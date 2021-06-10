@@ -15,7 +15,7 @@ require_once "../Modelos/documentosEcenM.php";
             }else{
                 echo "
                 <script>
-                    window.location = 'http://localhost/Sistema/verCarpeta';
+                    window.location = ''.URL_SERVER.'verCarpeta';
                 </script>
                 ";
             }
@@ -52,7 +52,7 @@ require_once "../Modelos/documentosEcenM.php";
         if ($resultado == true) {
             echo '<script>
 
-                window.location = "http://localhost/Sistema/verCarpeta/'.$materia.'/'. $matricula .'";
+                window.location = "'.URL_SERVER.'verCarpeta/'.$materia.'/'. $matricula .'";
 
                 </script>';
         }

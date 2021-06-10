@@ -1,4 +1,8 @@
 <?php
+require "config/app.php";
+
+require_once "Modelos/infoResidenciaM.php";
+require_once "Controladores/infoResidenciaC.php";
 
 require_once "Controladores/plantillaControlador.php";
 

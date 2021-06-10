@@ -2,7 +2,7 @@
 if($_SESSION["rol"] =! "Admin"||$_SESSION["rol"] != "Jefe"){
     echo '
     <script>
-    window.location ="http://localhost/Sistema/inicio";
+    window.location ="'.URL_SERVER.'inicio";
     </script>
 
     ';

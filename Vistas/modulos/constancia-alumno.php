@@ -94,7 +94,7 @@
                                         <td>' . $user["a_industrial"] . '</td>
                                         ';
                                         if($N["PDF"]!="en espera"){
-                                            echo'<td>Listo <a href="http://localhost/Sistema/tcpdf/pdf/Constancia.php/' . $N["matricula"] . '" target="blank" > ver PDF</a> </td> ';
+                                            echo'<td>Listo <a href="'.URL_SERVER.'tcpdf/pdf/Constancia.php/' . $N["matricula"] . '" target="blank" > ver PDF</a> </td> ';
                                         }
                                            
                                         if($N["estado"]==1){
@@ -117,7 +117,7 @@
                                         <td>' . $user["a_industrial"] . '</td>
                                         ';
                                         if($N["PDF"]!="en espera"){
-                                            echo'<td>Listo <a href="http://localhost/Sistema/tcpdf/pdf/Constancia.php/' . $N["matricula"] . '" target="blank" > ver PDF</a> </td> ';
+                                            echo'<td>Listo <a href="'.URL_SERVER.'tcpdf/pdf/Constancia.php/' . $N["matricula"] . '" target="blank" > ver PDF</a> </td> ';
                                         }
                                            
                                         if($N["estado"]==1){

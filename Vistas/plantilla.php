@@ -1,5 +1,6 @@
 <?php
 session_start();
+//include "server.php";
 ?>
 
 <!DOCTYPE html>
@@ -16,14 +17,14 @@ session_start();
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- Font Awesome --
-    <link rel="stylesheet" href="http://localhost/Sistema/Vistas/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo URL_SERVER?>Vistas/bower_components/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons --
-    <link rel="stylesheet" href="http://localhost/Sistema/Vistas/bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="<?php echo URL_SERVER?>Vistas/bower_components/Ionicons/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="http://localhost/Sistema/Vistas/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="<?php echo URL_SERVER?>Vistas/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="http://localhost/Sistema/Vistas/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="<?php echo URL_SERVER?>Vistas/dist/css/skins/_all-skins.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -124,7 +125,9 @@ session_start();
                 $url[0] == "calificaciones" ||
                 $url[0] == "solicitud-Constancia"||
                 $url[0] == "visitas"||
-                $url[0] == "Editar-Visitas"
+                $url[0] == "Editar-Visitas"||
+                $url[0] == "recuperar"||
+                $url[0] == "info"
                 
 
             ) {
@@ -149,7 +152,9 @@ session_start();
         if ($_GET["url"] == "Ingresar") {
 
             include "modulos/Ingresar.php";
-        }else{
+        }else if ($_GET["url"] == "recuperar"){
+            include "modulos/recuperar.php";
+        }else {
             include "modulos/Ingresar.php";
         }
     } else {
@@ -168,32 +173,33 @@ session_start();
     <!-- ./wrapper -->
 
     <!-- jQuery 3 -->
-    <script src="http://localhost/Sistema/Vistas/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="<?php echo URL_SERVER?>Vistas/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap 3.3.7 -->
-    <script src="http://localhost/Sistema/Vistas/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?php echo URL_SERVER?>Vistas/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- SlimScroll -->
-    <script src="http://localhost/Sistema/Vistas/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="<?php echo URL_SERVER?>Vistas/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
-    <script src="http://localhost/Sistema/Vistas/bower_components/fastclick/lib/fastclick.js"></script>
+    <script src="<?php echo URL_SERVER?>Vistas/bower_components/fastclick/lib/fastclick.js"></script>
     <!-- AdminLTE App -->
-    <script src="http://localhost/Sistema/Vistas/dist/js/adminlte.min.js"></script>
+    <script src="<?php echo URL_SERVER?>Vistas/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="http://localhost/Sistema/Vistas/dist/js/demo.js"></script>
+    <script src="<?php echo URL_SERVER?>Vistas/dist/js/demo.js"></script>
 
 
 
-    <script src="http://localhost/Sistema/Vistas/js/usuarios.js"></script>
-    <script src="http://localhost/Sistema/Vistas/js/materias.js"></script>
-    <script src="http://localhost/Sistema/Vistas/js/comisiones.js"></script>
+    <script src="<?php echo URL_SERVER?>Vistas/js/usuarios.js"></script>
+    <script src="<?php echo URL_SERVER?>Vistas/js/materias.js"></script>
+    <script src="<?php echo URL_SERVER?>Vistas/js/comisiones.js"></script>
    
-    
-<script src="http://localhost/Sistema/Vistas/js/xlsx.js"></script>
+     <!-- Manejo de Archivos excel -->
+<script src="<?php echo URL_SERVER?>Vistas/js/xlsx.js"></script>
     <script>
         $(document).ready(function() {
             $('.sidebar-menu').tree()
         })
     </script>
     
+     <!-- Filtrado de tablas -->
 <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {

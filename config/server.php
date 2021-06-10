@@ -1,8 +1,8 @@
 <?php
 
     //Definir todas la constantes de los parametros de la conexion
-    const  SERVER="http://localhost/Sistema/";
-
+   // const  SERVER="http://localhost:80/Sistema/";
+include_once "server.php";
     const DB="prueba";
 
     const USER="root";
@@ -12,7 +12,7 @@
     //Conexion de PDO
     //Constante para enviar los parametros de la conexion de la base de datos
     //Conectarnos a la base de datos
-    const SGBD="mysql:host=".SERVER.";dbname=".DB;
+    const SGBD="mysql:host=".URL_SERVER.";dbname=".DB;
     //Constantes para configuracion de encriptacion 
 
     const METHOD="AES-256-CBC";

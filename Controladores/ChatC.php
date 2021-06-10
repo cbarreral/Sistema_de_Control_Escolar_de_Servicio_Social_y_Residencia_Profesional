@@ -19,7 +19,7 @@ class ChatC{
 
 				echo '<script>
 
-				window.location = "http://localhost/Sistema/Obcervaciones/'.$_POST["matricula"].'/'.$_POST["id_doc"].'/'.$_POST["tipo"].'";
+				window.location = "'.URL_SERVER.'Obcervaciones/'.$_POST["matricula"].'/'.$_POST["id_doc"].'/'.$_POST["tipo"].'";
 				</script>';
 
 			}
@@ -38,7 +38,7 @@ class ChatC{
             if ($resultado == true) {
                 echo '<script>
 
-                window.location = "http://localhost/Sistema/verCarpeta/' . $exp[1] . '/' . $exp[2] . '";
+                window.location = "'.URL_SERVER.'verCarpeta/' . $exp[1] . '/' . $exp[2] . '";
 
                 </script>';
             }

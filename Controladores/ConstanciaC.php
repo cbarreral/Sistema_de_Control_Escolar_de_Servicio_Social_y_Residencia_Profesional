@@ -18,7 +18,7 @@ class ConstanciaC{
 
 				echo '<script>
 
-				window.location = "http://localhost/Sistema/constancia-alumno/'.$_POST["matricula"].'/'.$id_carrera.'";
+				window.location = "'.URL_SERVER.'constancia-alumno/'.$_POST["matricula"].'/'.$id_carrera.'";
 				</script>';
 
 			}
@@ -44,7 +44,7 @@ class ConstanciaC{
             $resultado =  ConstanciaM::GenerarM($tablaBD, $datosC);
             if ($resultado == true) {
                 echo '<script>
-                window.location = "http://localhost/Sistema/solicitud-Constancia";
+                window.location = "'.URL_SERVER.'solicitud-Constancia";
                 </script>';
             }
         }

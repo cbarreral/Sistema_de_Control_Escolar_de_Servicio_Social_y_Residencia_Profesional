@@ -8,7 +8,7 @@ $nota = MateriasC::VerNotasC($columna, $valor);
 if ($_SESSION["rol"] == "Alumno") {
     echo '
     <script>
-    window.location ="http://localhost/Sistema/inicio";
+    window.location ="'.URL_SERVER.'inicio";
     </script>
     ';
 

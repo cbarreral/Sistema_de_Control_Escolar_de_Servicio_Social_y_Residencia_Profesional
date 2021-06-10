@@ -35,22 +35,26 @@
                             } else {
                                 echo '<div class="alert alert-success">No tienes permisos para editar</div> ';
                             }
+                            $columna = "id_materia";
+                            $valor = $exp[1];
+                            $comisiones = MateriasC::VerMaterias2C("id", $valor);
+                            echo '<a type="button" class="btn btn-success "  href="https://google.cl/maps/place/' . $comisiones["direccion"] . '" target="_blank">Google Maps</a></td>
+                            ';
                             ?>
 
 
                         </div>
-                        <h2>Comisiones: </h2>
                         <table class=" table align-middle table-hover table-responsive T">
                             <thead>
                                 <tr>
-                                    <th>Número</th>
+                                    <th>Codigo</th>
                                     <th>Cantidad Máxima de Alumnos</th>
                                     <th>Horarios</th>
                                     <th>Días</th>
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="myTable">
                                 <?php
                                 $columna = "id_materia";
                                 $valor = $exp[1];
@@ -64,7 +68,7 @@
                                     <td>' . $value["horas"] . '</td>
                                     <td>' . $value["horario"] . '</td>
                                     <td>
-                                    <a href="http://localhost/Sistema/tcpdf/pdf/Inscriptos-Materias.php/' . $exp[1] . '/' . $value["id"] . '" target="blank">
+                                    <a href="'.URL_SERVER.'tcpdf/pdf/Inscriptos-Materias.php/' . $exp[1] . '/' . $value["id"] . '" target="blank">
                                     <button class="btn btn-default"> Generar PDF</button>
                                     </a>';
                                     if ($_SESSION["rol"] == "Admin") {
@@ -103,9 +107,9 @@
 
                     <div class="form-group">
 
-                        <h2>Número:</h2>
+                        <h2>Código:</h2>
 
-                        <input type="number" class="form-control input-lg" name="numero" required="">
+                        <input type="text" class="form-control input-lg" name="numero" >
 
                         <?php
 

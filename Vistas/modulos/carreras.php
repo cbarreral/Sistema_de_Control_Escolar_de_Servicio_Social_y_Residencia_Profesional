@@ -9,17 +9,14 @@ if ($_SESSION["rol"] != "Admin") {
 
 <div class="content-wrapper">
     <section class="content-header">
-        <h1>Gestor de Carreras del Tecnologico</h1>
 
-    <p>Filtra por Nombres, Carreras o cualquier otro campo</p>  
-    <input class="form-control" id="myInput" type="text" placeholder="Buscar..">
-    <!-- id="myTable" -->
+        <h2>Gestor de Carreras</h2>
 
-<br>
     </section>
 
     <section class="content">
         <div class="box">
+
             <div class="box-header">
 
                 <form action="" method="post">
@@ -61,15 +58,16 @@ if ($_SESSION["rol"] != "Admin") {
                 <button class="btn btn-danger pull-right" type="submit" data-toggle="modal" data-target="#VaciarRegistrosMaterias">Vacias Registros de Inscripciones del Catalogo</button>
 
             </div>
+
             <div class="box-body">
-                <table class="table table-bordered table-hover table-striped">
+                <table class=" table align-middle table-hover table-responsive T">
                     <thead>
                         <tr>
                             <th>id</th>
                             <th>Nombre</th>
                             <th>Jefe de carrera</th>
                             <th>Correo</th>
-                            <th>Acciones</th>
+                            <th>Controles</th>
                         </tr>
                     </thead>
                     <tbody id="myTable">
@@ -79,15 +77,18 @@ if ($_SESSION["rol"] != "Admin") {
                             $columna2 = "id_carrera";
                             $valor2 = $value["id"];
                             $user = UsuariosC::VerUsuarios2C($columna2, $valor2);
-                            foreach ($user as $key => $jefe) {
-                                  if ($jefe["rol"] == "Jefe"&&$jefe["correo"] != null) {
-                                    echo '
+
+                            echo '
                                     <tr>
                                     <td>' . $value["id"] . '</td>
-                                    <td>' . $value["nombre"] . '</td>
+                                    <td>' . $value["nombre"] . '</td>';
+                            foreach ($user as $key => $jefe) {
+                                if ($jefe["rol"] == "Jefe") {
+                                    echo '
                                     <td>' . $jefe["nombre"] . '</td>
-                                    <td> Enviar email a <a href="mailto:'.$jefe["correo"].'">
-                                    '.$jefe["correo"].'</a> </td>
+                                    <td><a href="mailto:' . $jefe["correo"] . '">
+                                    ' . $jefe["correo"] . '</a> 
+                                    </td>
                                     <td>
                                         <div class="btn-grup">
                                             <a href="Editar-Carrera/' . $value["id"] . '">
@@ -104,10 +105,19 @@ if ($_SESSION["rol"] != "Admin") {
                                             </a>
                                     </div>
                                 </td>
-                                </tr>
+                                
                                     ';
                                 }
-                                
+                                if ($jefe["id_carrera"] != $value["id"]) {
+                                    echo ' 
+                                        <td>
+                                            <a href="Editar-Carrera/' . $value["id"] . '">
+                                                <button class="btn btn-success">Editar</button>
+                                            </a>
+                                        </td>
+                                   ';
+                                }
+                                echo '</tr>';
                             }
                             # code...
                         }

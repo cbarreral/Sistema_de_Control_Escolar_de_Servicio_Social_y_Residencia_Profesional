@@ -4,7 +4,7 @@
 if($_SESSION["rol"] != "Admin"){
     echo '<script>
 
-                window.location = "http://localhost/Sistema/inicio";
+                window.location = "'.URL_SERVER.'inicio";
 
                 </script>';
                 return;
@@ -20,7 +20,7 @@ if($_SESSION["rol"] != "Admin"){
         $valorC = $exp[1];
         $carrera = CarrerasC::verCarreraC($columnaC, $valorC);
         echo '
-        <a href="http://localhost/Sistema/carreras">
+        <a href="'.URL_SERVER.'carreras">
                      <button class="btn btn-primary"> Volver </button>
          </a>
          <br> <br>
@@ -58,7 +58,7 @@ if($_SESSION["rol"] != "Admin"){
                             <td>' . $value["apellido"] ." ". $value["nombre"] .'</td>
                             
                             <td>
-                                <a href="http://localhost/Sistema/verCarpeta/'.$value["id_carrera"].'/'.$value["matricula"].'">
+                                <a href="'.URL_SERVER.'verCarpeta/'.$value["id_carrera"].'/'.$value["matricula"].'">
                                     <button class="btn btn-info">Carpeta de archivos</button>
                                 </a>
                             </td>

@@ -67,7 +67,7 @@
                                     <td>' . $comision["horas"] . '</td>
                                     <td>' . $comision["horario"] . '</td>
                                     <td>
-                                    <a href="http://localhost/Sistema/tcpdf/pdf/Inscriptos-Materias.php/' . $usuario["id"] . '/' . $value["id"] . '" target="blank">
+                                    <a href="'.URL_SERVER.'tcpdf/pdf/Inscriptos-Materias.php/' . $usuario["id"] . '/' . $value["id"] . '" target="blank">
                                     <button class="btn btn-default"> Generar PDF</button>
                                     </a>
                                     </td>

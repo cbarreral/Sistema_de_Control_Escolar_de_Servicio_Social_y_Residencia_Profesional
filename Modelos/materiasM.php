@@ -6,11 +6,12 @@ class MateriasM extends ConexionBD{
 
     static public function CrearMateriaM($tablaBD, $datosC){
 
-		$pdo = ConexionBD::conBD()->prepare("INSERT INTO $tablaBD (id_carrera, codigo, nombre, tipo) VALUES (:id_carrera, :codigo, :nombre, :tipo)");
+		$pdo = ConexionBD::conBD()->prepare("INSERT INTO $tablaBD (id_carrera, codigo, nombre,direccion, tipo) VALUES (:id_carrera, :codigo, :nombre, :direccion,:tipo)");
 
 		$pdo -> bindParam("id_carrera", $datosC["id_carrera"], PDO::PARAM_INT);
 		$pdo -> bindParam("codigo", $datosC["codigo"], PDO::PARAM_STR);
 		$pdo -> bindParam("nombre", $datosC["nombre"], PDO::PARAM_STR);
+        $pdo -> bindParam("direccion", $datosC["direccion"], PDO::PARAM_STR);
 		$pdo -> bindParam("tipo", $datosC["tipo"], PDO::PARAM_STR);
 
 		if($pdo -> execute()){
@@ -57,7 +58,7 @@ class MateriasM extends ConexionBD{
 
         $pdo->bindParam(":id_materia", $datosC["id_materia"], PDO::PARAM_INT);
         $pdo->bindParam(":c_maxima", $datosC["c_maxima"], PDO::PARAM_INT);
-        $pdo->bindParam(":numero", $datosC["numero"], PDO::PARAM_INT);
+        $pdo->bindParam(":numero", $datosC["numero"], PDO::PARAM_STR);
         $pdo->bindParam(":horas", $datosC["horas"], PDO::PARAM_STR);
         $pdo->bindParam(":horario", $datosC["horario"], PDO::PARAM_STR);
 

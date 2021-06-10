@@ -6,9 +6,7 @@
 
         ?>
         
-        <h2>Filtrar datos en Tabla</h2>
-        <p>Filtra por Apellido, Nombres, Carrera o cualquier otro campo</p>
-        <input class="form-control" id="myInput" type="text" placeholder="Buscar..">
+       
     </section>
     <section class="content">
 

@@ -19,17 +19,17 @@ if ($_SESSION["rol"] == "Alumno" || $_SESSION["rol"] == "a_Industrial") {
     <section class="content-header">
         <h1>Gestor de Usuarios</h1>
         <br>
-        <a href="http://localhost/Sistema/ImportarExcel/usuarios.php">
+        <a href="<?php echo URL_SERVER?>ImportarExcel/usuarios.php">
             <button class="btn btn-success " title="Importación masiva de usuarios desde excel">Importar usuarios de excel</button>
         </a>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#CrearUsuario">Crear Nuevo Usuario</button>
 
         <button type="button" class="btn btn-success " style="display:none" data-toggle="modal" data-target="#impExcel">Importar lista masiva de usuarios desde excel</button>
-        <a href="http://localhost/Sistema/tcpdf/pdf/expUsuarios.php" target="blank">
+        <a href="<?php echo URL_SERVER?>tcpdf/pdf/expUsuarios.php" target="blank">
             <button class="btn btn-danger ">Exportar tabla a PDF</button>
         </a>
-        <a href="http://localhost/Sistema/expExcel/UsuariosExcel.php">
+        <a href="<?php echo URL_SERVER?>expExcel/UsuariosExcel.php">
             <button class="btn btn-success ">Exportar tabla a excel</button>
         </a>
 
@@ -642,7 +642,7 @@ if ($_SESSION["rol"] == "Alumno" || $_SESSION["rol"] == "a_Industrial") {
                     <div class="modal-body">
                         <div class="box-body ">
 
-                            <div class="form-grup">
+                            <div class="form-group">
 
                                 <?php
                                 $columna = "id";
@@ -658,12 +658,12 @@ if ($_SESSION["rol"] == "Alumno" || $_SESSION["rol"] == "a_Industrial") {
                             </div>
                             <div class="form-grup">
                                 <h2>Apellido</h2>
-                                <input type="text" name="apellidoU" required id="">
+                                <input class="form-control" type="text" name="apellidoU" required id="">
                             </div>
 
                             <div class="form-grup">
                                 <h2>Nombres</h2>
-                                <input type="text" name="nombreU" required id="">
+                                <input class="form-control" type="text" name="nombreU" required id="">
                             </div>
 
                             <div class="form-grup">
@@ -688,23 +688,23 @@ if ($_SESSION["rol"] == "Alumno" || $_SESSION["rol"] == "a_Industrial") {
                             </div>
                             <div class="form-grup">
                                 <h2>Matricula</h2>
-                                <input type="text" name="matriculaU" required id="Validarmatricula">
+                                <input class="form-control" type="text" name="matriculaU" required id="Validarmatricula">
                             </div>
                             <div class="form-grup">
                                 <h2>Contraseña</h2>
-                                <input type="text" name="claveU" required id="">
+                                <input class="form-control" type="text" name="claveU" required id="">
                             </div>
                             <div class="form-grup">
                                 <h2>Telefono</h2>
-                                <input type="text" name="telefonoU" required id="telefonoU">
+                                <input class="form-control" type="text" name="telefonoU" required id="telefonoU">
                                 <h2>Dirección</h2>
-                                <input type="text" name="direccionU" id="direccionU">
+                                <input class="form-control" type="text" name="direccionU" id="direccionU">
                                 <h2>Correo electronico</h2>
-                                <input type="email" name="correoU" id="correoU">
+                                <input class="form-control" type="email" name="correoU" id="correoU">
                             </div>
                             <div class="form-grup">
                                 <h2>Seleccionar Rol</h2>
-                                <select name="rolU" class="form-control " id="" required>
+                                <select name="rolU" class="form-control" class="form-control " id="" required>
                                     <option>Selecciona un rol de usuario</option>
                                     <?php
                                     if ($_SESSION["rol"] != "Admin") {

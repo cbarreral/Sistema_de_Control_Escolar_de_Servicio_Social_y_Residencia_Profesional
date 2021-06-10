@@ -75,6 +75,7 @@
 
                                     foreach ($resultado as $key => $value) {
                                         $Constancia = ConstanciaC::VerConstanciaC("matricula", $value["matricula"]);
+                                        
                                         $col = "id";
                                         $id_carrera = $value["id_carrera"];
                                         $carrera = CarrerasC::verCarreraC($col, $id_carrera);
@@ -90,20 +91,36 @@
                                                             
                                                             
                                                             <td>
-                                                                <a href="http://localhost/Sistema/verCarpeta/' . $value["id_carrera"] . '/' . $value["matricula"] . '">
+                                                                <a href="'.URL_SERVER.'verCarpeta/' . $value["id_carrera"] . '/' . $value["matricula"] . '">
                                                                     <button class="btn btn-info">Carpeta de archivos</button>
                                                                 </a>
                                                             </td>';
                                                 if ($Constancia["estado"] == 2) {
                                                     echo '<td>
-                                                            <a href="http://localhost/Sistema/constancia-alumno/' . $value["matricula"]  .'/'.$value["id_carrera"].'" >
+                                                            <a href="'.URL_SERVER.'constancia-alumno/' . $value["matricula"]  .'/'.$value["id_carrera"].'" >
                                                             <button class="btn btn-success" >Constancia</button>
                                                             </a>
                                                         </td>
-                                                        </tr>  ';
+                                                        <td>
+                                                        <a href="'.URL_SERVER.'visitas/' . $value["matricula"] . '">
+                                                            <button class="btn btn-danger">Visitas</button>
+                                                        </a>
+                                                    </td>
+                                                    ';
+                                                }else{
+                                                    echo '
+                                                    <td>
+                                              <p>Sin Constancia</p>
+                                            </td>
+                                                        <td>
+                                                <a href="'.URL_SERVER.'visitas/' . $value["matricula"] . '">
+                                                    <button class="btn btn-danger">Visitas</button>
+                                                </a>
+                                            </td>
+                                                        </tr>';
                                                 }
-                                                $suma = ($key + 1);
-                                            }
+                                                    $suma = ($key + 1);
+                                                }
                                             if ($_SESSION["rol"] != "Alumno") {
                                                 if ($_SESSION["rol"] == "a_Academico" && $value["a_academico"] == $_SESSION["nombre"]) {
                                                     echo '
@@ -115,18 +132,34 @@
                                                                 
                                                                 
                                                                 <td>
-                                                                    <a href="http://localhost/Sistema/verCarpeta/' . $value["id_carrera"] . '/' . $value["matricula"] . '">
+                                                                    <a href="'.URL_SERVER.'verCarpeta/' . $value["id_carrera"] . '/' . $value["matricula"] . '">
                                                                         <button class="btn btn-info btn-rounded">Carpeta de archivos</button>
                                                                     </a>
                                                                 </td>';
                                                     if ($Constancia["estado"] == 2) {
                                                         echo '<td>
-                                                                <a href="http://localhost/Sistema/constancia-alumno/' . $value["matricula"] . '/'.$value["id_carrera"].'" >
+                                                                <a href="'.URL_SERVER.'constancia-alumno/' . $value["matricula"] . '/'.$value["id_carrera"].'" >
                                                                 <button class="btn btn-success" >Constancia</button>
                                                                 </a>
                                                             </td>
-                                                            </tr>  ';
-                                                    }
+                                                            <td>
+                                                            <a href="'.URL_SERVER.'visitas/' . $value["matricula"] . '">
+                                                                <button class="btn btn-danger">Visitas</button>
+                                                            </a>
+                                                        </td>
+                                                              ';
+                                                    }else{
+                                                        echo '
+                                                        <td>
+                                                  <p>Sin Constancia</p>
+                                               </td>
+                                                        <td>
+                                                   <a href="'.URL_SERVER.'visitas/' . $value["matricula"] . '">
+                                                       <button class="btn btn-danger">Visitas</button>
+                                                   </a>
+                                               </td>
+                                                           </tr>';
+                                                   }
                                                     $suma = ($key + 1);
                                                 } else  if ($_SESSION["rol"] == "a_Industrial" && $value["a_industrial"] == $_SESSION["nombre"]) {
                                                     echo '
@@ -138,18 +171,34 @@
                                                                 
                                                                 
                                                                 <td>
-                                                                    <a href="http://localhost/Sistema/verCarpeta/' . $value["id_carrera"] . '/' . $value["matricula"] . '">
+                                                                    <a href="'.URL_SERVER.'verCarpeta/' . $value["id_carrera"] . '/' . $value["matricula"] . '">
                                                                         <button class="btn btn-info">Carpeta de archivos</button>
                                                                     </a>
                                                                 </td>';
                                                     if ($Constancia["estado"] == 2) {
                                                         echo '<td>
-                                                                <a href="http://localhost/Sistema/constancia-alumno/' . $value["matricula"] .  '/'.$value["id_carrera"].'" >
+                                                                <a href="'.URL_SERVER.'constancia-alumno/' . $value["matricula"] .  '/'.$value["id_carrera"].'" >
                                                                 <button class="btn btn-success" >Constancia</button>
                                                                 </a>
                                                             </td>
-                                                            </tr>  ';
-                                                    }
+                                                            <td>
+                                                            <a href="'.URL_SERVER.'visitas/' . $value["matricula"] . '">
+                                                                <button class="btn btn-danger">Visitas</button>
+                                                            </a>
+                                                        </td>
+                                                        ';
+                                                    }else{
+                                                        echo '
+                                                        <td>
+                                                  <p>Sin Constancia</p>
+                                               </td>
+                                                        <td>
+                                                   <a href="'.URL_SERVER.'visitas/' . $value["matricula"] . '">
+                                                       <button class="btn btn-danger">Visitas</button>
+                                                   </a>
+                                               </td>
+                                                           </tr>';
+                                                   }
                                                     $suma = ($key + 1);
                                                 } else if ($_SESSION["rol"] == "Jefe" && $value["id_carrera"] == $_SESSION["id_carrera"]) {
                                                     echo '
@@ -161,18 +210,34 @@
                                                                 
                                                                 
                                                                 <td>
-                                                                    <a href="http://localhost/Sistema/verCarpeta/' . $value["id_carrera"] . '/' . $value["matricula"] . '">
+                                                                    <a href="'.URL_SERVER.'verCarpeta/' . $value["id_carrera"] . '/' . $value["matricula"] . '">
                                                                         <button class="btn btn-info">Carpeta de archivos</button>
                                                                     </a>
                                                                 </td>';
                                                     if ($Constancia["estado"] == 2) {
                                                         echo '<td>
-                                                                <a href="http://localhost/Sistema/constancia-alumno/' . $value["matricula"] . '/'.$value["id_carrera"].'" >
+                                                                <a href="'.URL_SERVER.'constancia-alumno/' . $value["matricula"] . '/'.$value["id_carrera"].'" >
                                                                 <button class="btn btn-success" >Constancia</button>
                                                                 </a>
                                                             </td>
-                                                            </tr>  ';
-                                                    }
+                                                            <td>
+                                                            <a href="'.URL_SERVER.'visitas/' . $value["matricula"] . '">
+                                                                <button class="btn btn-danger">Visitas</button>
+                                                            </a>
+                                                        </td>
+                                                             ';
+                                                    }else{
+                                                        echo '
+                                                        <td>
+                                                  <p>Sin Constancia</p>
+                                               </td>
+                                                        <td>
+                                                   <a href="'.URL_SERVER.'visitas/' . $value["matricula"] . '">
+                                                       <button class="btn btn-danger">Visitas</button>
+                                                   </a>
+                                               </td>
+                                                           </tr>';
+                                                   }
                                                     $suma = ($key + 1);
                                                 }
                                                 if ($_SESSION["rol"] == "Admin") {
@@ -185,18 +250,35 @@
                                                                 
                                                                 
                                                                 <td>
-                                                                    <a href="http://localhost/Sistema/verCarpeta/' . $value["id_carrera"] . '/' . $value["matricula"] . '">
+                                                                    <a href="'.URL_SERVER.'verCarpeta/' . $value["id_carrera"] . '/' . $value["matricula"] . '">
                                                                         <button class="btn btn-info">Carpeta de archivos</button>
                                                                     </a>
                                                                 </td>';
                                                     if ($Constancia["estado"] == 2) {
                                                         echo '<td>
-                                                                <a href="http://localhost/Sistema/constancia-alumno/' . $value["matricula"] .  '/'.$value["id_carrera"].'" >
+                                                                <a href="'.URL_SERVER.'constancia-alumno/' . $value["matricula"] .  '/'.$value["id_carrera"].'" >
                                                                 <button class="btn btn-success" >Constancia</button>
                                                                 </a>
                                                             </td>
-                                                            </tr>  ';
+                                                            <td>
+                                                    <a href="'.URL_SERVER.'visitas/' . $value["matricula"] . '">
+                                                        <button class="btn btn-danger">Visitas</button>
+                                                    </a>
+                                                </td>
+                                                             ';
+                                                    }else{
+                                                         echo '
+                                                         <td>
+                                                   <p>Sin Constancia</p>
+                                                </td>
+                                                         <td>
+                                                    <a href="'.URL_SERVER.'visitas/' . $value["matricula"] . '">
+                                                        <button class="btn btn-danger">Visitas</button>
+                                                    </a>
+                                                </td>
+                                                            </tr>';
                                                     }
+                                                   
                                                     
                                                 }$suma = ($key + 1);
                                             }
@@ -239,31 +321,7 @@
                                         $id_carrera = $value["id_carrera"];
                                         $carrera = CarrerasC::verCarreraC($col, $id_carrera);
                                         if ($value["rol"] == "Alumno" && $value["tipo"] == "Residencia_Profecional" || $value["rol"] == "Alumno" && $value["tipo"] == "Residencia_profecional") {
-                                            if ($_SESSION["rol"] == "Alumno" && $_SESSION["matricula"] == $value["matricula"]) {
-
-                                                echo '
-                                                    <tr>
-                                                        <td>' . $suma . '</td>
-                                                        <td>' . $value["matricula"] . '</td>
-                                                        <td>' . $value["apellido"] . " " . $value["nombre"] . '</td>
-                                                        <td>' . $carrera["nombre"] . '</td>
-                                                        
-                                                        <td>
-                                                            <a href="http://localhost/Sistema/verCarpeta/' . $value["id_carrera"] . '/' . $value["matricula"] . '">
-                                                                <button class="btn btn-info">Carpeta de archivos</button>
-                                                            </a>
-                                                        </td>';
-                                                if ($Constancia["estado"] == 2) {
-                                                    echo '<td>
-                                                        <a href="http://localhost/Sistema/constancia-alumno/' . $value["matricula"] .  '/'.$value["id_carrera"].'" >
-                                                        <button class="btn btn-success" >Constancia</button>
-                                                        </a>
-                                                    </td>
-                                                    </tr>  ';
-                                                }
-                                                $suma = ($key + 1);
-                                            }
-                                            if ($_SESSION["rol"] != "Alumno") {
+                                            if ($_SESSION["rol"] == "Alumno" && $_SESSION["matricula"] == $value["matricula"] && $value["id_carrera"] == $_SESSION["id_carrera"]) {
 
                                                 echo '
                                                         <tr>
@@ -272,20 +330,198 @@
                                                             <td>' . $value["apellido"] . " " . $value["nombre"] . '</td>
                                                             <td>' . $carrera["nombre"] . '</td>
                                                             
+                                                            
                                                             <td>
-                                                                <a href="http://localhost/Sistema/verCarpeta/' . $value["id_carrera"] . '/' . $value["matricula"] . '">
+                                                                <a href="'.URL_SERVER.'verCarpeta/' . $value["id_carrera"] . '/' . $value["matricula"] . '">
                                                                     <button class="btn btn-info">Carpeta de archivos</button>
                                                                 </a>
                                                             </td>';
                                                 if ($Constancia["estado"] == 2) {
                                                     echo '<td>
-                                                            <a href="http://localhost/Sistema/constancia-alumno/' . $value["matricula"] .  '/'.$value["id_carrera"].'" >
+                                                            <a href="'.URL_SERVER.'constancia-alumno/' . $value["matricula"]  .'/'.$value["id_carrera"].'" >
                                                             <button class="btn btn-success" >Constancia</button>
                                                             </a>
                                                         </td>
-                                                        </tr>  ';
+                                                        <td>
+                                                        <a href="'.URL_SERVER.'visitas/' . $value["matricula"] . '">
+                                                            <button class="btn btn-danger">Visitas</button>
+                                                        </a>
+                                                    </td>
+                                                    ';
+                                                }else{
+                                                    echo '
+                                                    <td>
+                                              <p>Sin Constancia</p>
+                                            </td>
+                                                        <td>
+                                                <a href="'.URL_SERVER.'visitas/' . $value["matricula"] . '">
+                                                    <button class="btn btn-danger">Visitas</button>
+                                                </a>
+                                            </td>
+                                                        </tr>';
                                                 }
-                                                $suma = ($key + 1);
+                                                    $suma = ($key + 1);
+                                                }
+                                            if ($_SESSION["rol"] != "Alumno") {
+                                                if ($_SESSION["rol"] == "a_Academico" && $value["a_academico"] == $_SESSION["nombre"]) {
+                                                    echo '
+                                                            <tr>
+                                                                <td>' . $suma . '</td>
+                                                                <td>' . $value["matricula"] . '</td>
+                                                                <td>' . $value["apellido"] . " " . $value["nombre"] . '</td>
+                                                                <td>' . $carrera["nombre"] . '</td>
+                                                                
+                                                                
+                                                                <td>
+                                                                    <a href="'.URL_SERVER.'verCarpeta/' . $value["id_carrera"] . '/' . $value["matricula"] . '">
+                                                                        <button class="btn btn-info btn-rounded">Carpeta de archivos</button>
+                                                                    </a>
+                                                                </td>';
+                                                    if ($Constancia["estado"] == 2) {
+                                                        echo '<td>
+                                                                <a href="'.URL_SERVER.'constancia-alumno/' . $value["matricula"] . '/'.$value["id_carrera"].'" >
+                                                                <button class="btn btn-success" >Constancia</button>
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                            <a href="'.URL_SERVER.'visitas/' . $value["matricula"] . '">
+                                                                <button class="btn btn-danger">Visitas</button>
+                                                            </a>
+                                                        </td>
+                                                              ';
+                                                    }else{
+                                                        echo '
+                                                        <td>
+                                                  <p>Sin Constancia</p>
+                                               </td>
+                                                        <td>
+                                                   <a href="'.URL_SERVER.'visitas/' . $value["matricula"] . '">
+                                                       <button class="btn btn-danger">Visitas</button>
+                                                   </a>
+                                               </td>
+                                                           </tr>';
+                                                   }
+                                                    $suma = ($key + 1);
+                                                } else  if ($_SESSION["rol"] == "a_Industrial" && $value["a_industrial"] == $_SESSION["nombre"]) {
+                                                    echo '
+                                                            <tr>
+                                                                <td>' . $suma . '</td>
+                                                                <td>' . $value["matricula"] . '</td>
+                                                                <td>' . $value["apellido"] . " " . $value["nombre"] . '</td>
+                                                                <td>' . $carrera["nombre"] . '</td>
+                                                                
+                                                                
+                                                                <td>
+                                                                    <a href="'.URL_SERVER.'verCarpeta/' . $value["id_carrera"] . '/' . $value["matricula"] . '">
+                                                                        <button class="btn btn-info">Carpeta de archivos</button>
+                                                                    </a>
+                                                                </td>';
+                                                    if ($Constancia["estado"] == 2) {
+                                                        echo '<td>
+                                                                <a href="'.URL_SERVER.'constancia-alumno/' . $value["matricula"] .  '/'.$value["id_carrera"].'" >
+                                                                <button class="btn btn-success" >Constancia</button>
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                            <a href="'.URL_SERVER.'visitas/' . $value["matricula"] . '">
+                                                                <button class="btn btn-danger">Visitas</button>
+                                                            </a>
+                                                        </td>
+                                                        ';
+                                                    }else{
+                                                        echo '
+                                                        <td>
+                                                  <p>Sin Constancia</p>
+                                               </td>
+                                                        <td>
+                                                   <a href="'.URL_SERVER.'visitas/' . $value["matricula"] . '">
+                                                       <button class="btn btn-danger">Visitas</button>
+                                                   </a>
+                                               </td>
+                                                           </tr>';
+                                                   }
+                                                    $suma = ($key + 1);
+                                                } else if ($_SESSION["rol"] == "Jefe" && $value["id_carrera"] == $_SESSION["id_carrera"]) {
+                                                    echo '
+                                                            <tr>
+                                                                <td>' . $suma . '</td>
+                                                                <td>' . $value["matricula"] . '</td>
+                                                                <td>' . $value["apellido"] . " " . $value["nombre"] . '</td>
+                                                                <td>' . $carrera["nombre"] . '</td>
+                                                                
+                                                                
+                                                                <td>
+                                                                    <a href="'.URL_SERVER.'verCarpeta/' . $value["id_carrera"] . '/' . $value["matricula"] . '">
+                                                                        <button class="btn btn-info">Carpeta de archivos</button>
+                                                                    </a>
+                                                                </td>';
+                                                    if ($Constancia["estado"] == 2) {
+                                                        echo '<td>
+                                                                <a href="'.URL_SERVER.'constancia-alumno/' . $value["matricula"] . '/'.$value["id_carrera"].'" >
+                                                                <button class="btn btn-success" >Constancia</button>
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                            <a href="'.URL_SERVER.'visitas/' . $value["matricula"] . '">
+                                                                <button class="btn btn-danger">Visitas</button>
+                                                            </a>
+                                                        </td>
+                                                             ';
+                                                    }else{
+                                                        echo '
+                                                        <td>
+                                                  <p>Sin Constancia</p>
+                                               </td>
+                                                        <td>
+                                                   <a href="'.URL_SERVER.'visitas/' . $value["matricula"] . '">
+                                                       <button class="btn btn-danger">Visitas</button>
+                                                   </a>
+                                               </td>
+                                                           </tr>';
+                                                   }
+                                                    $suma = ($key + 1);
+                                                }
+                                                if ($_SESSION["rol"] == "Admin") {
+                                                    echo '
+                                                            <tr>
+                                                                <td>' . $suma . '</td>
+                                                                <td>' . $value["matricula"] . '</td>
+                                                                <td>' . $value["apellido"] . " " . $value["nombre"] . '</td>
+                                                                <td>' . $carrera["nombre"] . '</td>
+                                                                
+                                                                
+                                                                <td>
+                                                                    <a href="'.URL_SERVER.'verCarpeta/' . $value["id_carrera"] . '/' . $value["matricula"] . '">
+                                                                        <button class="btn btn-info">Carpeta de archivos</button>
+                                                                    </a>
+                                                                </td>';
+                                                    if ($Constancia["estado"] == 2) {
+                                                        echo '<td>
+                                                                <a href="'.URL_SERVER.'constancia-alumno/' . $value["matricula"] .  '/'.$value["id_carrera"].'" >
+                                                                <button class="btn btn-success" >Constancia</button>
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                    <a href="'.URL_SERVER.'visitas/' . $value["matricula"] . '">
+                                                        <button class="btn btn-danger">Visitas</button>
+                                                    </a>
+                                                </td>
+                                                             ';
+                                                    }else{
+                                                         echo '
+                                                         <td>
+                                                   <p>Sin Constancia</p>
+                                                </td>
+                                                         <td>
+                                                    <a href="'.URL_SERVER.'visitas/' . $value["matricula"] . '">
+                                                        <button class="btn btn-danger">Visitas</button>
+                                                    </a>
+                                                </td>
+                                                            </tr>';
+                                                    }
+                                                   
+                                                    
+                                                }$suma = ($key + 1);
                                             }
                                         }
                                     }

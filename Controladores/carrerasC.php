@@ -68,13 +68,13 @@ class CarrerasC
             if($resultado == true){
                 echo '<script>
 
-                window.location = "http://localhost/Sistema/carreras";
+                window.location = "'.URL_SERVER.'carreras";
 
                 </script>';
             }else{
                 echo '<script>
 
-                window.location = "http://localhost/Sistema/carreras";
+                window.location = "'.URL_SERVER.'carreras";
 
                 </script>';
             }
@@ -96,7 +96,7 @@ class CarrerasC
             if($resultado == true){
                 echo '<script>
 
-                window.location = "http://localhost/Sistema/carreras";
+                window.location = "'.URL_SERVER.'carreras";
 
                 </script>';
             }

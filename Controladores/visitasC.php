@@ -1,5 +1,5 @@
 <?php
-class VisitasC
+class VisitasC 
 {
     public function VerVisitasC($columna, $valor)
     {
@@ -41,7 +41,7 @@ class VisitasC
             if($resultado == true){
                 echo '<script>
 
-                window.location = "http://localhost/Sistema/visitas";
+                window.location = "'.URL_SERVER.'visitas";
 
                 </script>';
             }
@@ -57,7 +57,7 @@ class VisitasC
             if ($resultado == true) {
                 echo '<script>
 
-                window.location = "http://localhost/Sistema/visitas";
+                window.location = "'.URL_SERVER.'visitas";
 
                 </script>';
             }

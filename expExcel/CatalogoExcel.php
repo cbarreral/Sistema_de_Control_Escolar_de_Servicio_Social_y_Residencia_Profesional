@@ -18,7 +18,7 @@ $salida ="";
 $salida .= "<table>
 
 <br>
-<h1>Tabla de registro de usuarios</h1>
+<h1>Tabla de empresas en Catalogo</h1>
 <br><br>
 <thead>
 <tr style='background-color:lightslategray'>
@@ -50,7 +50,7 @@ $salida .= 	"
         ";
 }
 header("Content-type: application/vnd.ms-excel");
-header("Content-Disposition: attachment; filename=usuarios_$fecha.xls");
+header("Content-Disposition: attachment; filename=Catalogo_$fecha.xls");
 header("Pragma: no-cache");
 header("Expires: 0");
 echo $salida;

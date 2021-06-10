@@ -8,14 +8,14 @@ class MateriasC{
  
 				$tablaBD = "materias";
 
-				$datosC = array("id_carrera"=>$_POST["id_carrera"], "codigo"=>$_POST["codigo"], "nombre"=>$_POST["nombre"], "tipo"=>$_POST["tipo"]);
+				$datosC = array("id_carrera"=>$_POST["id_carrera"], "codigo"=>$_POST["codigo"], "nombre"=>$_POST["nombre"], "direccion"=>$_POST["direccion"], "tipo"=>$_POST["tipo"]);
 
 				$resultado = MateriasM::CrearMateriaM($tablaBD, $datosC);
 
 				if($resultado == true){
                         echo '<script>
 
-                        window.location = "http://localhost/Sistema/catalogo";
+                        window.location = "'.URL_SERVER.'catalogo";
                        
                         </script>';
 				}
@@ -43,14 +43,14 @@ class MateriasC{
                 if($id_carrera ==null){
                     echo '<script>
 
-                    window.location = "http://localhost/Sistema/crear-materias";
+                    window.location = "'.URL_SERVER.'crear-materias";
                    
                     </script>';
 
                 }else{
                     echo '<script>
 
-                    window.location = "http://localhost/Sistema/crear-materias/' . $id_carrera . '";
+                    window.location = "'.URL_SERVER.'crear-materias/' . $id_carrera . '";
                     </script>';
                 }
                 
@@ -86,7 +86,7 @@ class MateriasC{
 
 					echo '<script>
 
-					window.location = "http://localhost/Sistema/crear-comisiones/'.$id_materia.'/'.$id_carrera.'";
+					window.location = "'.URL_SERVER.'crear-comisiones/'.$id_materia.'/'.$id_carrera.'";
 					</script>';
 
 				}
@@ -121,7 +121,7 @@ class MateriasC{
 
                 echo '<script>
 
-                window.location = "http://localhost/Sistema/crear-comisiones/'.$Cid.'/'.$id_carrer.'";
+                window.location = "'.URL_SERVER.'crear-comisiones/'.$Cid.'/'.$id_carrer.'";
                 </script>';
 
             }
@@ -143,7 +143,7 @@ class MateriasC{
 
             echo '<script>
 
-            window.location = "http://localhost/Sistema/verCarpeta/' . $id_carrera . '/' . $matricula . '";
+            window.location = "'.URL_SERVER.'verCarpeta/' . $id_carrera . '/' . $matricula . '";
             </script>';
 
         }
@@ -177,7 +177,7 @@ class MateriasC{
  
              echo '<script>
  
-             window.location = "http://localhost/Sistema/verCarpeta/' . $id_carrera . '/' . $matricula . '";
+             window.location = "'.URL_SERVER.'verCarpeta/' . $id_carrera . '/' . $matricula . '";
              </script>';
  
          }
@@ -190,7 +190,7 @@ class MateriasC{
             if($_POST["id_comision"]==null){
                 echo '<script>
     
-                window.location = "http://localhost/Sistema/catalogo";
+                window.location = "'.URL_SERVER.'catalogo";
                 alert("No se puede inscribir porque no hay una comision existente para esta institución");
                 </script>';
             }
@@ -200,13 +200,13 @@ class MateriasC{
  
                 echo '<script>
     
-                window.location = "http://localhost/Sistema/inscrito";
+                window.location = "'.URL_SERVER.'inscrito";
                 </script>';
     
             }else{
             echo '<script>
     
-            window.location = "http://localhost/Sistema/materias";
+            window.location = "'.URL_SERVER.'materias";
             </script>';
         }
         }
@@ -233,7 +233,7 @@ class MateriasC{
  
                 echo '<script>
     
-                window.location = "http://localhost/Sistema/carreras";
+                window.location = "'.URL_SERVER.'carreras";
                 </script>';
     
             }

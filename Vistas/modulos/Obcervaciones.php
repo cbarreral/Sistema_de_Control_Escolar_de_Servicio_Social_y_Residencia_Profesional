@@ -22,8 +22,8 @@
              
                 echo '
                 <div class="btn-group">
-                <a class="btn btn-primary" href="http://localhost/Sistema/verCarpeta/'.$Alumno["id_carrera"].'/'.$matricula.'"><i class="fas fa-arrow-left"></i> Volver</a>
-                <a class="btn btn-success" href="http://localhost/Sistema/Documentos/' . $vdoc["PDF"] . '" target="black" data-placement="top" title="Ver archivo PDF (' . $vdoc["PDF"] . ') "> Ver PDF en tamaño grande</a></td>
+                <a class="btn btn-primary" href="'.URL_SERVER.'verCarpeta/'.$Alumno["id_carrera"].'/'.$matricula.'"><i class="fas fa-arrow-left"></i> Volver</a>
+                <a class="btn btn-success" href="'.URL_SERVER.'Documentos/' . $vdoc["PDF"] . '" target="black" data-placement="top" title="Ver archivo PDF (' . $vdoc["PDF"] . ') "> Ver PDF en tamaño grande</a></td>
                 
                 </div>
                 <hr>
@@ -32,7 +32,7 @@
                     <div class="d-flex">
                         <div class="p-2 flex-grow-1">
                             <div class="container">
-                                <iframe style="width: 700px; height: 500px;" class="responsive-iframe" src="http://localhost/Sistema/Documentos/'.$vdoc["PDF"].'"></iframe>
+                                <iframe style="width: 700px; height: 500px;" class="responsive-iframe" src="'.URL_SERVER.'Documentos/'.$vdoc["PDF"].'"></iframe>
                             </div>
                         </div>
                         ';
@@ -40,7 +40,7 @@
                     }
                 }else{
                     echo'
-                    <a class="btn btn-primary" href="http://localhost/Sistema/visitas/'.$Alumno["id_carrera"].'/'.$matricula.'"><i class="fas fa-arrow-left"></i> Volver</a>
+                    <a class="btn btn-primary" href="'.URL_SERVER.'visitas/'.$Alumno["id_carrera"].'/'.$matricula.'"><i class="fas fa-arrow-left"></i> Volver</a>
                    
                     ';
                     if($_SESSION["rol"]=="Alumno"){
@@ -58,7 +58,7 @@
                             $user = UsuariosC::VerUsuariosC("id",$mensaje["id_De"]);
                             if($matricula==$user["matricula"]){
                                 echo'
-                                <div class="container ">
+                                <div class="container " id="myTable">
                                 
                                     <p>De: <span style="color:blue" >'.$user["rol"].' </span>  '.$user["nombre"].'  a las '.$mensaje["fecha"].'</p>
                                     <div class="alert alert-dark">
@@ -69,7 +69,7 @@
                                 ';
                             }else{
                                  echo'
-                            <div class="container ">
+                            <div class="container " id="myTable">
                             
                                 <p>De: <span style="color:red" >'.$user["rol"].' </span> '.$user["nombre"].'  a las '.$mensaje["fecha"].'</p>
                                 <div class="alert alert-info">

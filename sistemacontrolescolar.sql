@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-03-2021 a las 17:41:32
+-- Tiempo de generación: 10-06-2021 a las 02:17:05
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.2.34
 
@@ -96,6 +96,25 @@ INSERT INTO `comisiones` (`id`, `id_materia`, `c_maxima`, `horario`, `numero`, `
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `documentacion`
+--
+
+CREATE TABLE `documentacion` (
+  `id` int(11) NOT NULL,
+  `PDF` text COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `nombre` text COLLATE utf8mb4_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `documentacion`
+--
+
+INSERT INTO `documentacion` (`id`, `PDF`, `nombre`) VALUES
+(3, '10-06-2021_Codigo_de_etica.docx', 'Código de ética');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `documentos`
 --
 
@@ -154,6 +173,26 @@ CREATE TABLE `examenes` (
   `hora` text COLLATE utf8_spanish2_ci NOT NULL,
   `fecha` text COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `inforesidencia`
+--
+
+CREATE TABLE `inforesidencia` (
+  `id` int(11) NOT NULL,
+  `objetivos` text COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `empresasPDF` text COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `calendarioPDF` text COLLATE utf8mb4_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `inforesidencia`
+--
+
+INSERT INTO `inforesidencia` (`id`, `objetivos`, `empresasPDF`, `calendarioPDF`) VALUES
+(1, 'Contribuir al desarrollo personal de nuestros alumnos próximos a egresar mediante la confrontación de sus ideas y opiniones surgidas en el ámbito laboral sobre problemas determinados. Propiciamos la participación de nuestros alumnos en la toma de decisiones en situaciones reales, acrecentando su confianza en la aplicación de conocimientos y desarrollo de habilidades para su integración a la actividad económica del país.', '09-06-2021_EmpresasVinculadas2016.pdf', '09-06-2021_Calendario_Residencias_Profesionales_enero_mayo_2021.pdf');
 
 -- --------------------------------------------------------
 
@@ -251,6 +290,28 @@ CREATE TABLE `notificaciones` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `procesos`
+--
+
+CREATE TABLE `procesos` (
+  `id` int(11) NOT NULL,
+  `info` text COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `num` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `procesos`
+--
+
+INSERT INTO `procesos` (`id`, `info`, `num`) VALUES
+(1, 'Haber aprobado el 80% de los créditos correspondientes a la carrera que estés cursando.', 1),
+(2, 'Ser alumno regular y estar inscrito oficialmente en el Instituto.', 2),
+(3, 'Haber seleccionado un tema de proyecto debidamente avalado por la academia, y contar con al menos un docente asesor asignado por la Jefatura de División correspondiente.', 3),
+(4, 'Disponer de constancia de situación académica emitida por el Departamento de Servicios Escolares.', 4);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `reportes`
 --
 
@@ -336,6 +397,12 @@ ALTER TABLE `comisiones`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `documentacion`
+--
+ALTER TABLE `documentacion`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `documentos`
 --
 ALTER TABLE `documentos`
@@ -351,6 +418,12 @@ ALTER TABLE `evaluaciones`
 -- Indices de la tabla `examenes`
 --
 ALTER TABLE `examenes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `inforesidencia`
+--
+ALTER TABLE `inforesidencia`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -381,6 +454,12 @@ ALTER TABLE `notas`
 -- Indices de la tabla `notificaciones`
 --
 ALTER TABLE `notificaciones`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `procesos`
+--
+ALTER TABLE `procesos`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -418,6 +497,12 @@ ALTER TABLE `comisiones`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `documentacion`
+--
+ALTER TABLE `documentacion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de la tabla `documentos`
 --
 ALTER TABLE `documentos`
@@ -434,6 +519,12 @@ ALTER TABLE `evaluaciones`
 --
 ALTER TABLE `examenes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `inforesidencia`
+--
+ALTER TABLE `inforesidencia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `inscribir_examenes`
@@ -464,6 +555,12 @@ ALTER TABLE `notas`
 --
 ALTER TABLE `notificaciones`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `procesos`
+--
+ALTER TABLE `procesos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `reportes`

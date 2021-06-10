@@ -16,27 +16,20 @@ $exp =explode("/", $_GET["url"]);
         $columna = "id";
         if($exp[1]==null){
             echo '<script>
-            window.location = "http://localhost/Sistema/catalogo";
+            window.location = "'.URL_SERVER.'catalogo";
         </script>';
         return;
         }
         $valor = $exp[1];
         $carrera= CarrerasC::verCarreraC($columna,$valor);
         echo'
-        <a href="http://localhost/Sistema/carreras">
+        <a href="'.URL_SERVER.'carreras">
         <button class="btn btn-primary"> Volver </button></a>
         <br> <br>
         <h1>Gestor de Catalogo de la carrera de  '.$carrera["nombre"].'</h1>
         
         ';
         ?>
-<h2>Filtrar datos en Tabla</h2>
-    <p>Filtra por Nombres, Carreras o cualquier otro campo</p>  
-    <input class="form-control" id="myInput" type="text" placeholder="Buscar..">
-    <!-- id="myTable" -->
-
-
-        
     </section>
 
     <section class="content">
@@ -46,10 +39,10 @@ $exp =explode("/", $_GET["url"]);
                 <a href="#" style="display:none">
                     <button class="btn btn-success ">Importar lista desde excel</button>
                 </a>
-                <a href="http://localhost/Sistema/tcpdf/pdf/expCatalogo.php" target="blank">
+                <a href="<?php echo URL_SERVER?>tcpdf/pdf/expCatalogo.php" target="blank">
                     <button class="btn btn-danger ">Exportar a PDF</button>
                 </a>
-                <a href="http://localhost/Sistema/expExcel/CatalogoExcel.php">
+                <a href="<?php echo URL_SERVER?>expExcel/CatalogoExcel.php">
                     <button class="btn btn-success ">Exportar tabla a excel</button>
                 </a>
             </div>
@@ -76,7 +69,7 @@ $exp =explode("/", $_GET["url"]);
     
                                 <td>
                                     <div class="btn-group">
-                                        <a href="http://localhost/Sistema/crear-comisiones/'.$value["id"].'/'.$value["id_carrera"].'">
+                                        <a href="'.URL_SERVER.'crear-comisiones/'.$value["id"].'/'.$value["id_carrera"].'">
                                             <button class="btn btn-success">Detalles</button>
                                         </a>
                                         <a href="">

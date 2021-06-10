@@ -52,7 +52,7 @@ if ($_SESSION["rol"] != "Admin") {
                         <th>
                             <div class="btn-group">
                                 
-                                <a href="http://localhost/Sistema/c-e/'.$value["id_carrera"].'/'.$value["id"].'">
+                                <a href="'.URL_SERVER.'c-e/'.$value["id_carrera"].'/'.$value["id"].'">
                                 <button class="btn btn-default">Crear Examen</button>
                                 </a>
                         </div>

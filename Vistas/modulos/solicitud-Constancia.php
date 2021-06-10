@@ -5,9 +5,7 @@
     <section class="content-header">
         
         <h1>Gestor de Constancias / Liberación</h1>
-        <h2>Filtrar datos en Tabla</h2>
-        <p>Filtra por Apellido, Nombres, Carrera o cualquier otro campo</p>
-        <input class="form-control" id="myInput" type="text" placeholder="Buscar..">
+        
     </section>
     <section class="content">
 
@@ -16,7 +14,7 @@
         <div class="box">
             <div class="box-body">
                 <p class="text-center">Constancia</p>
-                <table class="table table-bordered table-hover table-striped">
+                <table class="table table-bordered table-hover table-responsive table-striped T">
                     <thead>
                         <tr>
                             <th>N°</th>
@@ -57,15 +55,15 @@
                                                         <input type="hidden" name="id_carrera" value="'.$user["id_carrera"].'">
                                                         <input type="hidden" name="fecha" value="'.$N["fecha"].'">
                                                         <input type="hidden" name="estado" value="2">
-                                                        <input type="hidden" name="PDF" value=http://localhost/Sistema/tcpdf/pdf/Constancia.php/' . $N["matricula"] . '">
-                                                    <a href="http://localhost/Sistema/tcpdf/pdf/Constancia.php/' . $N["matricula"] . '" target="_blank">
+                                                        <input type="hidden" name="PDF" value='.URL_SERVER.'tcpdf/pdf/Constancia.php/' . $N["matricula"] . '">
+                                                    <a href="'.URL_SERVER.'tcpdf/pdf/Constancia.php/' . $N["matricula"] . '" target="_blank">
                                                     <button class="btn btn-success" target="_blank""> Generar Constancia</button>
                                                     </a>
                                                     </td>
                                                     <td > <a href="verCarpeta/'.$user["id_carrera"].'/'.$user["matricula"].'" class="btn btn-default">Ver carpeta</a> </td>
                                                 ';
                                                 if($N["PDF"]!="en espera"){
-                                                    echo'<td>Listo <a href="http://localhost/Sistema/tcpdf/pdf/Constancia.php/' . $N["matricula"] . '"> ver PDF</a> </td> ';
+                                                    echo'<td>Listo <a href="'.URL_SERVER.'tcpdf/pdf/Constancia.php/' . $N["matricula"] . '"> ver PDF</a> </td> ';
                                                 }
                                                    echo'
                                                 </tr>

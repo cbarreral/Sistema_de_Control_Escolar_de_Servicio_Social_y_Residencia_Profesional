@@ -48,7 +48,7 @@
                                         <td>' . $resultado["grado"] . '</td>
                                         <td>' . $resultado["tipo"] . '</td>
                                         <td>
-                                            <a href="http://localhost/Sistema/inscribir-materia/'.$_SESSION["id_carrera"].'/'.$resultado["id"].'">
+                                            <a href="'.URL_SERVER.'inscribir-materia/'.$_SESSION["id_carrera"].'/'.$resultado["id"].'">
                                                 <button  class="btn btn-info">Ver detalles</button>
                                             </a>
                                         </td>
@@ -65,7 +65,7 @@
                                             <td>' . $resultado["grado"] . '</td>
                                             <td>' . $resultado["tipo"] . '</td>
                                             <td>
-                                                <a href="http://localhost/Sistema/inscribir-materia/'.$_SESSION["id_carrera"].'/'.$resultado["id"].'">
+                                                <a href="'.URL_SERVER.'inscribir-materia/'.$_SESSION["id_carrera"].'/'.$resultado["id"].'">
                                                     <button  class="btn btn-info">Ver detalles</button>
                                                 </a>
                                             </td>

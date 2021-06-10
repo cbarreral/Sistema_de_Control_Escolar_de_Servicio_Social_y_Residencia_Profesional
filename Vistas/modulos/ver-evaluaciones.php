@@ -94,7 +94,7 @@
 
 										if($_SESSION["rol"] == "Alumno"){
 
-										echo '<a href="http://localhost/Sistema/inscribir-evaluacion/'.$_SESSION["id_carrera"].'/'.$value["id"].'">
+										echo '<a href="'.URL_SERVER.'inscribir-evaluacion/'.$_SESSION["id_carrera"].'/'.$value["id"].'">
 
 										<button class="btn btn-primary">Ver Detalles</button>
 
@@ -142,7 +142,7 @@
 
 										if($_SESSION["rol"] == "Admin"){
 
-										echo '<a href="http://localhost/Sistema/inscritos-evaluacion/'.$value["id"].'">
+										echo '<a href="'.URL_SERVER.'inscritos-evaluacion/'.$value["id"].'">
 
 										<button class="btn btn-primary">Ver Inscriptos</button>
 
@@ -150,7 +150,7 @@
 
 											if($value["estado"] == 1){
 
-												echo '<a href="http://localhost/Sistema/">
+												echo '<a href="'.URL_SERVER.'">
 
 												<button class="btn btn-warning">Deshabilitar</button>
 
@@ -158,7 +158,7 @@
 
 											}else{
 
-												echo '<a href="http://localhost/Sistema/">
+												echo '<a href="'.URL_SERVER.'">
 
 												<button class="btn btn-success">Habilitar</button>
 
@@ -166,7 +166,7 @@
 
 											}
 
-										echo '<a href="http://localhost/Sistema/">
+										echo '<a href="'.URL_SERVER.'">
 
 										<button class="btn btn-danger">Borrar</button>
 

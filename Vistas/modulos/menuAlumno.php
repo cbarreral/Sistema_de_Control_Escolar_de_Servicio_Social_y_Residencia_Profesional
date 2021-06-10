@@ -3,7 +3,7 @@
         <ul class="sidebar-menu">
             <li>
 
-                <a href="http://localhost/Sistema/">
+                <a href="<?php echo URL_SERVER?>">
                     <i class="fa fa-home">
                         <samp>Inicio</samp>
                     </i>
@@ -13,7 +13,7 @@
 
             <li>
 
-                <a href="http://localhost/Sistema/catalogo">
+                <a href="<?php echo URL_SERVER?>catalogo">
                     <i class="fa fa-home">
                         <samp>Catalogo</samp>
                     </i>
@@ -22,7 +22,7 @@
             </li>
             <li>
 
-                <a href="http://localhost/Sistema/inscrito">
+                <a href="<?php echo URL_SERVER?>inscrito">
                     <i class="fa fa-home">
                         <samp>Mi horario</samp>
                     </i>
@@ -32,7 +32,7 @@
 
             <li>
 
-                <a href="http://localhost/Sistema/Carpetas">
+                <a href="<?php echo URL_SERVER?>Carpetas">
                     <i class="fa fa-home">
                         <samp>Carpetas</samp>
                     </i>
@@ -43,7 +43,7 @@
             <li>
                 <?php
                 echo '
-                <a href="http://localhost/Sistema/constancia-alumno/' . $_SESSION["matricula"] . '/' . $_SESSION["id_carrera"] . '">
+                <a href="<?php echo URL_SERVER?>constancia-alumno/' . $_SESSION["matricula"] . '/' . $_SESSION["id_carrera"] . '">
                     <i class="fa fa-home">
                         <samp>Certificados</samp>
                     </i>
@@ -52,7 +52,7 @@
             </li>
             <li>
 
-                <a href="http://localhost/Sistema/visitas">
+                <a href="<?php echo URL_SERVER?>visitas">
                     <i class="fa fa-home">
                         <samp>Visitas a empresa</samp>
                     </i>

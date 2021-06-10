@@ -10,11 +10,11 @@
             <?php
             if ($_SESSION["rol"] != "Admin" && $_SESSION["rol"] != "Jefe") {
                 echo '
-                <div class="alert alert-success">No tienes permisos para editar el catalogo</div> ';
+                <div class="alert alert-success">Listado de catalogo de empresas inscritas</div> ';
             } else {
                 echo '
             
-                <a href="http://localhost/Sistema/ImportarExcel/catalogos.php">
+                <a href="'.URL_SERVER.'ImportarExcel/catalogos.php">
                     <button class="btn btn-success " title="Importación masiva de usuarios desde excel">Importar usuarios de excel</button>
                 </a>
                 <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#CrearMateria">Agregar Empresa</button>
@@ -22,10 +22,10 @@
                 <a href="#" style="display:none">
                     <button class="btn btn-success ">Importar lista desde excel</button>
                 </a>
-                <a href="http://localhost/Sistema/tcpdf/pdf/expCatalogo.php" target="blank">
+                <a href="'.URL_SERVER.'tcpdf/pdf/expCatalogo.php" target="blank">
                     <button class="btn btn-danger ">Exportar a PDF</button>
                 </a>
-                <a href="http://localhost/Sistema/expExcel/CatalogoExcel.php">
+                <a href="'.URL_SERVER.'expExcel/CatalogoExcel.php">
                     <button class="btn btn-success ">Exportar tabla a excel</button>
                 </a>
            
@@ -62,9 +62,10 @@
     
                                 <td>
                                     <div class="btn-group">
-                                        <a href="http://localhost/Sistema/crear-comisiones/' . $value["id"] . '/' . $value["id_carrera"] . '">
-                                            <button class="btn btn-info">Horarios</button>
-                                        </a>';
+                                        <a href="'.URL_SERVER.'crear-comisiones/' . $value["id"] . '/' . $value["id_carrera"] . '">
+                                            <button class="btn btn-info">Detalles</button>
+                                        </a>
+                                        ';
                             if ($_SESSION["rol"] == "Alumno") {
                                 $inscrito = MateriasC::VerInscripcionesMaterias2C("id_alumno", $_SESSION["id"]);
                                 if ($inscrito == true) {
@@ -74,7 +75,7 @@
                                                 </a>';
                                 } else {
                                     echo ' 
-                                                <a href="http://localhost/Sistema/inscribir-materia/' . $value["id_carrera"] . '/' . $value["id"] . '">
+                                                <a href="'.URL_SERVER.'inscribir-materia/' . $value["id_carrera"] . '/' . $value["id"] . '">
                                                     <button class="btn btn-primary">Inscribir</button>
                                                 </a>';
                                 }
@@ -124,7 +125,8 @@
                         <input type="text" name="codigo" class="form-control " required id="codigo">
                         <h2>Nombre:</h2>
                         <input type="text" name="nombre" class="form-control " required id="nombre">
-
+                        <h2>Dirección Completa:</h2>
+                        <input type="text" name="direccion" class="form-control " required id="direccion">
                     </div>
                     <div class="form-group">
 

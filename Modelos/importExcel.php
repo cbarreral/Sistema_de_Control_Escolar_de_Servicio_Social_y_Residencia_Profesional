@@ -21,7 +21,7 @@ if (isset($_FILES["name"])) {
     if ($resultado == true) {
         echo '<script>
         
-        window.location = "http://localhost/Sistema/usuarios";
+        window.location = "'.URL_SERVER.'usuarios";
         </script>';
     }
 }
@@ -135,7 +135,7 @@ if(isset($_FILES["name"])){
 
 }
 echo "<script>
-window.location = 'http://localhost/Sistema/usuarios';
+window.location = ''.URL_SERVER.'usuarios';
 </script>
 ";
 

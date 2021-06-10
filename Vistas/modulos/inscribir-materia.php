@@ -11,6 +11,7 @@
                 $materia = MateriasC::VerMaterias2C($columna,$valor);
 
                 $ins = MateriasC::VerInscripcionesMaterias2C("id_alumno",$_SESSION["id"]);
+              
 
                 echo'<h2>Inscribirse a : <b>'.$materia["nombre"].'</b></h2>
                 <input type="hidden" name="id_alumno" value="'.$_SESSION["id"].'" id="">
@@ -18,9 +19,6 @@
                 <div class="row">
                     <div class="col-md-6 col-xs-12">
                         <h2>Codigo: '.$materia["codigo"].'</h2>
-                        <h2>Grado : '.$materia["grado"].'</h2>
-                        <h2>inscrito : '.$ins["id"].'</h2>
-                        
                     </div>
                     <div class="col-md-6 col-xs-12">
                         <h2>Tipo: '.$materia["tipo"].'</h2>

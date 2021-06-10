@@ -26,7 +26,7 @@
             }
         }
 
-        echo ' <a href="http://localhost/Sistema/detalles-usuario/' . $exp[1] . '/' . $exp[2] . '" type="button" class="btn btn-success">Ver Perfil</a>';
+        echo ' <a href="'.URL_SERVER.'detalles-usuario/' . $exp[1] . '/' . $exp[2] . '" type="button" class="btn btn-success">Ver Perfil</a>';
 
 
         ?>
@@ -77,7 +77,7 @@
                                    
                                  '; echo '
                                 <td>
-                                <a href="http://localhost/Sistema/Obcervaciones/' . $exp[2] .'/' . $N["id"] .'/1">  
+                                <a href="'.URL_SERVER.'Obcervaciones/' . $exp[2] .'/' . $N["id"] .'/1">  
                                   <button class="btn btn-primary btn-sm pull-left"><i class="fa fa-delt"></i>Ver PDF</button>
                                 </a>
                              </td>
@@ -85,7 +85,7 @@
                                 if ($_SESSION["rol"] == "Alumno") {
                                     echo '
                                     <td>
-                                    <a href="http://localhost/Sistema/verCarpeta/' . $exp[1] . '/' . $exp[2] . '/' . $N["id"] . '">  
+                                    <a href="'.URL_SERVER.'verCarpeta/' . $exp[1] . '/' . $exp[2] . '/' . $N["id"] . '">  
                                       <button class="btn btn-danger btn-sm pull-left"><i class="fa fa-delt"></i>Eliminar</button>
                                     </a>
                                  </td>
@@ -165,7 +165,7 @@
                                     echo '
                                    
                                     <td>
-                                    <a href="http://localhost/Sistema/Obcervaciones/' . $exp[2] .'/' . $N["id"] .'/2">  
+                                    <a href="'.URL_SERVER.'Obcervaciones/' . $exp[2] .'/' . $N["id"] .'/2">  
                                       <button class="btn btn-primary btn-sm pull-left"><i class="fa fa-delt"></i>Ver PDF</button>
                                     </a>
                                  </td>
@@ -208,7 +208,7 @@
 
                                 if ($_SESSION["rol"] != "Alumno") {
                                     echo '
-                                       <a href="https://localhost/Sistema/nota-materia/' . $exp[1] . '/' . $exp[2] . '/' . $N["id"] . '">
+                                       <a href="'.URL_SERVER.'nota-materia/' . $exp[1] . '/' . $exp[2] . '/' . $N["id"] . '">
                                             
                                             <button class="btn btn-success btn-sm pull-left">Evaluar</button>
     
@@ -242,7 +242,7 @@
     </section>
 </div>
 
-
+ 
 <!-- SUBIR DOCUMENTOS ESENCIALES  -->
 
 

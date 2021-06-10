@@ -6,7 +6,7 @@ if ($_SESSION["id_carrera"] != $exp[1]) {
 
     echo '<script>
 
-	window.location = "http://localhost/Sistema/inicio";
+	window.location = "'.URL_SERVER.'inicio";
 	</script>';
 
     return;

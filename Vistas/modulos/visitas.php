@@ -1,8 +1,6 @@
 <div class="content-wrapper">
     <section class="content-header">
-        <?php
-
-        ?>
+      
         <h2>Visitas a empresas</h2>
         <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#crearvisita"> Agendar</button>
 
@@ -33,7 +31,10 @@
                     </thead>
                     <tbody id="myTable">
                         <?php
-                        $visita = VisitasC::VerVisitasC(null, null);
+                      
+                      
+                          $visita = VisitasC::VerVisitasC(null, null);
+                      
 
 
                         foreach ($visita as $key => $Vervisita) {
@@ -69,7 +70,7 @@
                             }
                             echo '
                                 <td>
-                                <a href="http://localhost/Sistema/Obcervaciones/' . $alumno["matricula"] .'/' . $Vervisita["id"] .'/3">  
+                                <a href="'.URL_SERVER.'Obcervaciones/' . $alumno["matricula"] .'/' . $Vervisita["id"] .'/3">  
                                   <button class="btn btn-primary btn-sm pull-left"><i class="fa fa-delt"></i>Ver PDF</button>
                                 </a>
                              </td>
@@ -215,7 +216,7 @@ $eliminar->BorrarVisitasC();
                     
                     </form>
                     ';
-                }
+                } 
                 ?>
             </div>
             <div class="modal-footer">

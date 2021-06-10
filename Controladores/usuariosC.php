@@ -48,7 +48,11 @@ class UsuariosC
                 } else {
                     echo '<br>
                 
-                <div class="alert alert-danger"> Error al ingresar</div>
+           
+
+           <!-- Recuperar Contraseña -->
+           <a href="recuperar" class="btn btn-success btn-block">Recuperar Contraseña</a><br>
+                <div class="alert alert-danger"> Error al ingresar, la contraseña y usuario no coinciden </div>
                 ';
                 }
             }
@@ -69,20 +73,20 @@ class UsuariosC
        <div class="row">
            <div class="col-md-6 col-xs-12">
                <h2>Fecha de nacimiento</h2>
-               <input type="date" class="input-lg" name="fechanac" value="' . $resultado["fechanac"] . '" id="">
-               <input type="hidden" class="input-lg" name="Uid" value="' . $resultado["id"] . '" id="">
+               <input type="date" class="form-control" name="fechanac" value="' . $resultado["fechanac"] . '" id="">
+               <input type="hidden" class="form-control" name="Uid" value="' . $resultado["id"] . '" id="">
                <h2>Telefono</h2>
-               <input type="text" class="input-lg" name="telefono" value="' . $resultado["telefono"] . '" id="">
+               <input type="text" class="form-control" name="telefono" value="' . $resultado["telefono"] . '" id="">
                <h2>Dirección: </h2>
-               <input type="text" class="input-lg" name="direccion" value="' . $resultado["direccion"] . '" id="">
+               <input type="text" class="form-control" name="direccion" value="' . $resultado["direccion"] . '" id="">
 
            </div>
 
            <div class="col-md-6 col-xs-12">
                <h2>Correo electronico</h2>
-               <input type="email" class="input-lg" name="correo" value="' . $resultado["correo"] . '" id="">
+               <input type="email" class="form-control" name="correo" value="' . $resultado["correo"] . '" id="">
               <h2>Contraseña:</h2>
-               <input type="text" class="input-lg" name="clave" value="' . $resultado["clave"] . '" id="">
+               <input type="text" class="form-control" name="clave" value="' . $resultado["clave"] . '" id="">
 
                <br><br>
                <button type="submit" class="btn btn-success">Guardar datos</button>
@@ -114,7 +118,7 @@ class UsuariosC
                 
                 echo '<script>
                 
-                window.location = "http://localhost/Sistema/mis-datos";
+                window.location = "'.URL_SERVER.'mis-datos";
                 </script>';
 
             }
@@ -142,7 +146,7 @@ class UsuariosC
               
                 echo '<script>
                 
-               window.location = "http://localhost/Sistema/usuarios";
+               window.location = "'.URL_SERVER.'usuarios";
                 </script>';
             }
         }
@@ -184,7 +188,7 @@ class UsuariosC
             if ($resultado == true) {
                 echo '<script>
                 
-                window.location = "http://localhost/Sistema/detalles-usuario/'.$_POST["carreraEU"].'/'.$_POST["matriculaEU"].'";
+                window.location = "'.URL_SERVER.'detalles-usuario/'.$_POST["carreraEU"].'/'.$_POST["matriculaEU"].'";
                 </script>';
             }
         }

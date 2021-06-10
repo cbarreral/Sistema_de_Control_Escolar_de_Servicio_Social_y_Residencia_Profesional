@@ -18,7 +18,7 @@ class EvaluacionesC{
 
 				echo '<script>
 
-				window.location = "http://localhost/Sistema/crear-evaluaciones/'.$id_carrera.'";
+				window.location = "'.URL_SERVER.'crear-evaluaciones/'.$id_carrera.'";
 				</script>';
 
 			}
@@ -48,7 +48,7 @@ class EvaluacionesC{
 			if($resultado==true){
 				echo '<script>
 
-				window.location = "http://localhost/Sistema/ver-evaluaciones/'.$id_carrera.'";
+				window.location = "'.URL_SERVER.'ver-evaluaciones/'.$id_carrera.'";
 				</script>';
 
 			}

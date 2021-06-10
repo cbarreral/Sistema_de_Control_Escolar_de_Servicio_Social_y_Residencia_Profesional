@@ -37,7 +37,7 @@ class DocumentosEcenC
             if ($resultado == true&&$resultado2 == true) {
                 echo '<script>
 
-                window.location = "http://localhost/Sistema/verCarpeta/' . $exp[1] . '/' . $exp[2] . '";
+                window.location = "'.URL_SERVER.'verCarpeta/' . $exp[1] . '/' . $exp[2] . '";
 
                 </script>';
             }
@@ -61,13 +61,13 @@ class DocumentosEcenC
 
                     echo '<script>
                 
-                    window.location = "http://localhost/Sistema/calificaciones";
+                    window.location = "'.URL_SERVER.'calificaciones";
                     </script>';
                 }else{
                     
                 echo '<script>
                 
-                window.location = "http://localhost/Sistema/verCarpeta/'.$id_materia.'/'.$matricula.'";
+                window.location = "'.URL_SERVER.'verCarpeta/'.$id_materia.'/'.$matricula.'";
                 </script>';
                 }
             }
@@ -88,7 +88,7 @@ class DocumentosEcenC
                 print_r("true");
                 echo '<script>
                 
-                window.location = "http://localhost/Sistema/calificaciones";
+                window.location = "'.URL_SERVER.'calificaciones";
                 </script>';
             }
         }

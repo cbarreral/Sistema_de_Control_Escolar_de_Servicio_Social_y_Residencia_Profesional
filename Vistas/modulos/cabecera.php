@@ -17,7 +17,7 @@
             </li>
             
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="http://localhost/Sistema/inicio">Inicio</a>
+              <a class="nav-link active" aria-current="page" href="<?php echo URL_SERVER?>inicio">Inicio</a>
             </li>
 
             <!-- Navbar dropdown -->
@@ -28,12 +28,12 @@
               <!-- Dropdown menu -->
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                <li><a class="dropdown-item" href="http://localhost/Sistema/mis-datos">Ver mi Perfil</a></li>
+                <li><a class="dropdown-item" href="<?php echo URL_SERVER?>mis-datos">Ver mi Perfil</a></li>
                 <li>
                   <hr class="dropdown-divider" />
                 </li>
                 <li>
-                  <a class="dropdown-item" href="http://localhost/Sistema/salir">Cerrar Sesión</a>
+                  <a class="dropdown-item" href="<?php echo URL_SERVER?>salir">Cerrar Sesión</a>
                 </li>
               </ul>
             </li>

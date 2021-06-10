@@ -43,7 +43,7 @@ class VisitasM extends ConexionBD
 
         $pdo->close();
         $pdo = null;
-    }
+    } 
 
     static function BorrarCVisitasM($tablaBD, $id){
         $pdo = ConexionBD::conBD() -> prepare("DELETE FROM $tablaBD WHERE id = :id");

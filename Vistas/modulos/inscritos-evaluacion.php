@@ -4,7 +4,7 @@ if ($_SESSION["rol"] != "Admin") {
 
     echo '<script>
 
-	window.location = "http://localhost/Sistema/inicio";
+	window.location = "'.URL_SERVER.'inicio";
 	</script>';
 
     return;
@@ -36,7 +36,7 @@ if ($_SESSION["rol"] != "Admin") {
       ';
 
       echo '
-      <a href="http://localhost/Sistema/tcpdf/pdf/Inscriptos-Examen.php/'.$exp[1].'" target="blank">
+      <a href="'.URL_SERVER.'tcpdf/pdf/Inscriptos-Examen.php/'.$exp[1].'" target="blank">
       <button class="btn btn-primary">Generar PDF</button>
       </a>
       ';
