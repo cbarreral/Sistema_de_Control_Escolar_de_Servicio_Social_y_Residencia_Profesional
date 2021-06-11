@@ -3,6 +3,76 @@
 class UsuariosC
 {
 
+    public function CrearCuenta(){
+        if(isset($_POST["matriculaU"])){
+            if($_POST["matriculaU"]==null&&$_POST["nombre"]==null&&$_POST["nombre"]==null&&$_POST["id_carrera"]==null&&$_POST["especialidad"]==null){
+                echo '
+                <script>
+               // alert("Matricula nula");
+                </script>
+                ';
+                $ingreso = new UsuariosC();
+                $ingreso->IniciarSesionC();
+            }else{
+              
+          
+            $tablaBD = "usuarios";
+              
+
+            $datosC = array("matricula"=>$_POST["matriculaU"],"clave"=>$_POST["matriculaU"],"nombre"=>$_POST["nombre"],
+            "apellido"=>$_POST["apellido"],"id_carrera"=>$_POST["carrera"],"telefono"=>$_POST["telefono"],"correo"=>$_POST["correo"],"rol"=>$_POST["rol"],"especialidad"=>$_POST["especialidad"]);
+            
+            $resultado = UsuariosM::CrearCuentaM($tablaBD, $datosC);}
+            if ($resultado == true) {
+               
+                echo '<script>
+                
+               //window.location = "'.URL_SERVER.'inicio";
+                </script>
+                <br> <br>
+               <div class="alert alert-success">
+                <p>Cuenta creada Satisfactoriamente!!, Inicia Sesión</p>
+                <button class="btn btn-primary btn-lg" type="button" data-mdb-toggle="modal" data-mdb-target="#Ingresar">Ingresar</button>
+               </div>
+               <div class="modal fade " id="Ingresar">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="" method="post">
+                    <div class="modal-body">
+                        <div class="box-body ">
+
+                    <div class="form-outline mb-4 bg-gray-light rounded">
+                        <input type="text" id="form1Example1" name="matricula" class="form-control" />
+                        <label class="form-label" for="form1Example1">Usuario</label>
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-4 bg-gray-light rounded">
+                        <input type="password" name="clave" id="form1Example2" class="form-control" />
+                        <label class="form-label" for="form1Example2">Contraseña</label>
+                    </div>
+
+              <br>
+
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+            
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+                ';    
+            
+            }else{
+                echo '
+                
+                <div class="alert alert-info">Upss.! Ocurrio un error al crear la cuenta, revisa que todos los campos esten llenos</div>';
+            }
+
+        }
+    }
     //Iniciar sesión
 
     public function IniciarSesionC()

@@ -94,6 +94,31 @@ class UsuariosM extends ConexionBD
         $pdo = null;
     }
 
+    public function CrearCuentaM($tablaBD, $datosC)
+    {
+        $pdo = ConexionBD::conBD()->prepare("INSERT INTO $tablaBD (matricula, clave, nombre, apellido, id_carrera, telefono, correo,  rol, especialidad)
+        VALUES (:matricula, :clave, :nombre, :apellido, :id_carrera, :telefono, :correo,  :rol, :especialidad)");
+
+        $pdo->bindParam(":matricula", $datosC["matricula"], PDO::PARAM_INT);
+        $pdo->bindParam(":clave", $datosC["clave"], PDO::PARAM_INT);
+        $pdo->bindParam(":nombre", $datosC["nombre"], PDO::PARAM_STR);
+        $pdo->bindParam(":apellido", $datosC["apellido"], PDO::PARAM_STR);
+        $pdo->bindParam(":id_carrera", $datosC["id_carrera"], PDO::PARAM_INT);
+        $pdo->bindParam(":telefono", $datosC["telefono"], PDO::PARAM_STR);
+        $pdo->bindParam(":correo", $datosC["correo"], PDO::PARAM_STR);
+        $pdo->bindParam(":rol", $datosC["rol"], PDO::PARAM_STR);
+        $pdo->bindParam(":especialidad", $datosC["especialidad"], PDO::PARAM_STR);
+
+        if ($pdo->execute()) {
+            return true;
+        }
+
+        # return $pdo -> fetch();
+
+        //$pdo->close();
+
+        $pdo = null;
+    }
 
     //Ver usuarios
     public function verUsuarioM($tablaBD, $columna, $valor)

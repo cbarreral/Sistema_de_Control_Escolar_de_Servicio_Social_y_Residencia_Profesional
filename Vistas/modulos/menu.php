@@ -1,6 +1,9 @@
-<aside class="main-sidebar">
+<aside class="main-sidebar"  style="background-color: #263238;">
     <section class="sidebar">
         <ul class="sidebar-menu">
+            <li>
+                <img src="<?php echo URL_SERVER?>/Vistas/img/logo.png" width="200px" alt="" srcset="">
+            </li>
             <li>
 
                 <a href="<?php echo URL_SERVER?>inicio">
@@ -12,7 +15,7 @@
             </li>
             <li>
 
-                <a href="<?php echo URL_SERVER?>solicitudes">
+                <a href="<?php echo URL_SERVER?>verSolicitudes/1">
                     <i class="fa fa-home">
                         <samp>Solicitudes</samp>
                     </i>

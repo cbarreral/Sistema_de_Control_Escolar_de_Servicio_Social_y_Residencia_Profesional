@@ -9,7 +9,7 @@
       /* Height for devices larger than 576px */
       @media (min-width:900px) {
         #intro {
-          margin-top: -600.59px;
+          margin-top: -450.59px;
         }
       }
 
@@ -100,7 +100,7 @@
           ?>
           <p>
           <h4>¿Dónde puedes realizar la Residencia Profesional?</h4>
-         
+
           <?php
           $respuesta = infoResidenciaC::VerInfoC();
           echo '
@@ -122,7 +122,7 @@
                     $resul = infoResidenciaC::VerDocumentosC();
                     foreach ($resul as  $Doc) {
                       echo '
-                    <li><a target="blank" href="'.URL_SERVER.'Documentacion/'. $Doc["PDF"] .'">' . $Doc["nombre"] . '</a> </li>
+                    <li><a target="blank" href="' . URL_SERVER . 'Documentacion/' . $Doc["PDF"] . '">' . $Doc["nombre"] . '</a> </li>
                    ';
                     }; ?>
                   </ol>
@@ -140,10 +140,16 @@
             
               ';
           ?>
+          <hr>
           <div class="row">
-            <div class="col-6">
+            <div class="col-2">
+              <a type="button" class="btn btn-primary btn-lg" href="crearCuenta">Crear cuenta</a>
+            </div>
+
+            <div class="col-2">
               <button class="btn btn-success btn-lg" type="button" data-mdb-toggle="modal" data-mdb-target="#Ingresar">Ingresar</button>
             </div>
+           
           </div>
         </div>
 
@@ -160,39 +166,7 @@
 
 
   <!--Modal Ingresar -->
-  <div class="modal fade" id="">
-    <div class="modal-dialog">
-      <div class="modal-content">
 
-
-        <form class="bg-white rounded shadow-5-strong p-5" method="post">
-          <!-- Email input -->
-          <div class="form-outline mb-4">
-            <input type="text" id="form1Example1" name="matricula" class="form-control" />
-            <label class="form-label" for="form1Example1">Usuario</label>
-          </div>
-
-          <!-- Password input -->
-          <div class="form-outline mb-4">
-            <input type="password" name="clave" id="form1Example2" class="form-control" />
-            <label class="form-label" for="form1Example2">Contraseña</label>
-          </div>
-
-          <br>
-
-          <!-- Submit button -->
-          <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
-          <?php
-
-          $ingreso = new UsuariosC();
-          $ingreso->IniciarSesionC();
-
-          ?>
-        </form>
-      </div>
-
-    </div>
-  </div>
 
 
 
@@ -207,13 +181,13 @@
           <div class="modal-body">
             <div class="box-body ">
 
-              <div class="form-outline mb-4">
+              <div class="form-outline mb-4 bg-gray-light rounded">
                 <input type="text" id="form1Example1" name="matricula" class="form-control" />
                 <label class="form-label" for="form1Example1">Usuario</label>
               </div>
 
               <!-- Password input -->
-              <div class="form-outline mb-4">
+              <div class="form-outline mb-4 bg-gray-light rounded">
                 <input type="password" name="clave" id="form1Example2" class="form-control" />
                 <label class="form-label" for="form1Example2">Contraseña</label>
               </div>

@@ -73,17 +73,17 @@ session_start();
         echo '<div class="wrapper">';
 
         include "modulos/cabecera.php";
+        $user = UsuariosC::VerUsuariosC("matricula", $_SESSION["matricula"]);
 
-
-        if ($_SESSION["rol"] == "Admin") {
+        if ($user["rol"] == "Admin") {
             include "modulos/menu.php";
-        } else if ($_SESSION["rol"] == "Alumno") {
+        } else if ($user["rol"] == "Alumno") {
             include "modulos/menuAlumno.php";
-        } else if ($_SESSION["rol"] == "a_Academico") {
+        } else if ($user["rol"] == "a_Academico") {
             include "modulos/menuAcademico.php";
-        }else if ($_SESSION["rol"] == "a_Industrial") {
+        }else if ($user["rol"] == "a_Industrial") {
             include "modulos/menuIndustrial.php";
-        }else if ($_SESSION["rol"] == "Jefe") {
+        }else if ($user["rol"] == "Jefe") {
             include "modulos/menuJefe.php";
         }
         $url = array();
@@ -127,7 +127,11 @@ session_start();
                 $url[0] == "visitas"||
                 $url[0] == "Editar-Visitas"||
                 $url[0] == "recuperar"||
-                $url[0] == "info"
+                $url[0] == "info"||
+                $url[0] == "crearCuenta"||
+                $url[0] == "solicitudRecidencia"||
+                $url[0] == "verSolicitudes"||
+                $url[0] == "detallesSolicitud"
                 
 
             ) {
@@ -154,6 +158,8 @@ session_start();
             include "modulos/Ingresar.php";
         }else if ($_GET["url"] == "recuperar"){
             include "modulos/recuperar.php";
+        }else if ($_GET["url"] == "crearCuenta"){
+            include "modulos/crearCuenta.php";
         }else {
             include "modulos/Ingresar.php";
         }

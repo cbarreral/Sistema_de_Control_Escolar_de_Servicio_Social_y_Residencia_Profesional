@@ -631,7 +631,7 @@ if ($_SESSION["rol"] == "Alumno" || $_SESSION["rol"] == "a_Industrial") {
 
 
 
-    <!-- CREAR 
+    <!-- CREAR  
     
     -->
 
