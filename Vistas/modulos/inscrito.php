@@ -40,7 +40,7 @@
                         <table class=" table align-middle table-hover table-responsive T">
                             <thead>
                                 <tr>
-                                    <th>Numero</th>
+                                    <th>Número</th>
                                     <th>Cantidad Máxima de Alumnos</th>
                                     <th>horas</th>
                                     <th>horarios</th>

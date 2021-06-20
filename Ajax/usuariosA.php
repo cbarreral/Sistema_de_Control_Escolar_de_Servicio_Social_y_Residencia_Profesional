@@ -23,7 +23,17 @@ class UsuariosA{
         echo json_encode($resultado);   
     }
 
+    public $checkPlantilla;
+    public function checkPlantilla(){
+        $columna = "id_plantilla";
+        $valor = $this->checkPlantilla;
+        $resultado = UsuariosC::verPlantilla($columna, $valor);
+
+        echo json_encode($resultado);   
+    }
 }
+
+
 
 if(isset($_POST["Uid"])){
     $editarU = new UsuariosA();
@@ -35,4 +45,10 @@ if(isset($_POST["verificarMatricula"])){
     $verificarMa = new UsuariosA();
     $verificarMa ->verificarMatricula = $_POST["verificarMatricula"];
     $verificarMa -> VerificarMatricula();
+}
+
+if(isset($_POST["checkPlantilla"])){
+    $checkPla = new UsuariosA();
+    $checkPla ->checkPlantilla = $_POST["checkPlantilla"];
+    $checkPla -> checkPlantilla();
 }

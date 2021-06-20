@@ -14,6 +14,16 @@ class infoResidenciaM extends ConexionBD
 
         $pdo = null;
     }
+    public static function VerPlantillasM($tablaBD){
+        $pdo = ConexionBD::conBD()->prepare("SELECT * FROM $tablaBD " );
+        $pdo->execute();
+
+        return $pdo->fetchAll();
+
+        $pdo->close();
+
+        $pdo = null;
+    }
     public static function VerProcesos($tablaBD){
         $pdo = ConexionBD::conBD()->prepare("SELECT * FROM $tablaBD ORDER BY num ASC" );
         $pdo->execute();

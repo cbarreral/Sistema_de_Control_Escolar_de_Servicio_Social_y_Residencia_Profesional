@@ -53,6 +53,145 @@
                                         </div>
                                     </div>
                                 </div>';
+
+
+                                   // 2do NIVEL
+                            echo '
+                                    
+                               
+                            </div>
+                            <div class="d-flex mb-3">
+                            
+                            ';
+
+
+                            //  EVALUACIOES
+                            echo '
+                                    
+                            <div class="p-2">
+                                <div class="card w-80 " style="background-color: #26A69A;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Carpeta de evaluaciones y reportes parciales </h5>
+                                        <p class="card-text">
+                                            <h4>';
+
+                        $columna = "estado";
+                        $valor = 3;
+                        $solicitud = SolicitudResidenciaC::ContarSolicitud($columna, $valor);
+
+                        echo '
+                                            </h4> Archivos
+                                            </p>
+                                            <a href="verCarpeta/'.$_SESSION["id_carrera"].'/'.$_SESSION["matricula"].'" class="btn btn-primary"  style="background-color: #004D40;">Ver mi carpeta</a>
+                                          
+                                        </div>
+                                    </div>
+                                
+                                    </div>';
+
+
+
+
+                        //  VISITAS A EMPRESAS
+                        echo '
+                                
+                            <div class="p-2">
+                                <div class="card w-70 " style="background-color: #03A9F4;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Calendario de Visitas programadas a empresas </h5>
+                                        <p class="card-text">
+                                            <h4>';
+
+                        $columna = "estado";
+                        $valor = 3;
+                        $solicitud = SolicitudResidenciaC::ContarSolicitud($columna, $valor);
+
+                        echo '
+                                            </h4> Visitas Programadas 
+                                            </p>
+                                            <a href="verSolicitudes" class="btn btn-primary"  style="background-color: #01579B;">Ver Calendario de visitas</a>
+                                          
+                                        </div>
+                                    </div>
+                                
+                                    </div>';
+                        //  CONSTANCIAS
+                        echo '
+                            
+                        <div class="p-2">
+                            <div class="card w-70 " style="background-color: #26C6DA;  ">
+                                <div class="card-body" style="color: #fff;">
+                                    <h5 class="card-title">Constancias de los alumnos</h5>
+                                    <p class="card-text">
+                                        <h4>';
+
+                        $columna = "estado";
+                        $valor = 3;
+                        $solicitud = SolicitudResidenciaC::ContarSolicitud($columna, $valor);
+
+                        echo '
+                                        </h4> documentos
+                                        </p>
+                                        <a href="verSolicitudes" class="btn btn-primary" style="background-color: #311B92;">Ver Constancias</a>
+                                      
+                                    </div>
+                                </div>
+                            
+                                </div>';
+
+
+
+   // 2do NIVEL
+   echo '
+                                    
+                               
+   </div>
+   <div class="d-flex mb-3">
+   
+   ';
+
+                                  //  MI EMPRESA
+                        echo '
+                                
+                        <div class="p-2">
+                            <div class="card w-70 " style="background-color: #B9F6CA;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Datos de la empresa</h5>
+                                    <p class="card-text">
+                                        <h4>Información de la empresa / Institución
+                                        </h4>  
+                                        </p>
+                                        <a href="verSolicitudes" class="btn btn-primary"  style="background-color: #00C853;">Ver Calendario de visitas</a>
+                                      
+                                    </div>
+                                </div>
+                            
+                                </div>';
+                    //  HORARIOS
+                    echo '
+                        
+                    <div class="p-2">
+                        <div class="card w-70 " style="background-color: #FF80AB;">
+                            <div class="card-body">
+                                <h5 class="card-title">Mi Horario</h5>
+                                <p class="card-text">
+                                    <h4>Horarios que puedo realizar mi Residencia en la empresa
+                                    </h4> 
+                                    </p>
+                                    <a href="inscrito" class="btn btn-primary" style="background-color: #880E4F;">Ver Constancias</a>
+                                  
+                                </div>
+                            </div>
+                        
+                            </div>';
+   // 3do NIVEL
+   echo '
+                                    
+                               
+   </div>
+   <div class="d-flex mb-3">
+   
+   ';
                         }
                         if ($user["rol"] == "Admin") {
 
@@ -73,7 +212,7 @@
                             echo '
                                             </h4> Solicitudes sin revisar
                                             </p>
-                                            <a href="verSolicitudes/1" class="btn btn-warning" style="background-color: #EF6C00;">Ver Solicitudes</a>
+                                            <a href="verSolicitudes/1/" class="btn btn-warning" style="background-color: #EF6C00;">Ver Solicitudes</a>
                                           
                                         </div>
                                     </div>
@@ -109,7 +248,7 @@
                             echo '
                                     
                                 <div class="p-2">
-                                    <div class="card w-70 " style="background-color: #EC407A; color:while";>
+                                    <div class="card w-70 " style="background-color: #FF4081; color: #EEEEEE";>
                                         <div class="card-body">
                                             <h5 class="card-title">Aspirantes rechazados/BajaTemporal a Residencia Profecional</h5>
                                             <p class="card-text">
@@ -171,7 +310,7 @@
                             echo '
                                     
                                 <div class="p-2">
-                                    <div class="card w-80 " style="background-color: #26A69A;">
+                                    <div class="card w-80 " style="background-color: #26A69A; color: #EEEEEE;">
                                         <div class="card-body">
                                             <h5 class="card-title">Evaluaciones y reportes parciales </h5>
                                             <p class="card-text">
@@ -198,7 +337,7 @@
                             echo '
                                     
                                 <div class="p-2">
-                                    <div class="card w-70 " style="background-color: #03A9F4;">
+                                    <div class="card w-70 " style="background-color: #03A9F4;color: #EEEEEE;">
                                         <div class="card-body">
                                             <h5 class="card-title">Calendario de Visitas programadas a empresas </h5>
                                             <p class="card-text">
@@ -221,7 +360,7 @@
                             echo '
                                 
                             <div class="p-2">
-                                <div class="card w-70 " style="background-color: #7E57C2;">
+                                <div class="card w-70 " style="background-color: #7E57C2;color: #EEEEEE"">
                                     <div class="card-body">
                                         <h5 class="card-title">Constancias de los alumnos</h5>
                                         <p class="card-text">

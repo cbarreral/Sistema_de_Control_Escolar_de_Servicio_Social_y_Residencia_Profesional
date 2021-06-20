@@ -8,6 +8,11 @@ class infoResidenciaC
         return $resultado;
     }
 
+    public function VerPlantillas(){
+        $tablaBD = "plantillas";
+        $resultado = infoResidenciaM::VerPlantillasM($tablaBD);
+        return $resultado;
+    }
     public function VerProcesos(){
         $tablaBD = "procesos";
         $resultado = infoResidenciaM::VerProcesos($tablaBD);

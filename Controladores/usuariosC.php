@@ -222,7 +222,12 @@ class UsuariosC
         }
     }
 
-
+    static public function verPlantilla($columna, $valor)
+    {
+        $tablaBD = "plantillas";
+        $resultado = UsuariosM::verPlantillaM($tablaBD, $columna, $valor);
+        return $resultado;
+    }
     //Ver usuarios
 
     static public function VerUsuariosC($columna, $valor)

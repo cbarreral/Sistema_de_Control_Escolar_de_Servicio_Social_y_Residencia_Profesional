@@ -29,36 +29,36 @@ require_once "../Modelos/documentosEcenM.php";
         }
     }*/
 
-    $rutaPrograma = "";
-    $fecha1 = date("d-m-Y");
-    $materia =$_POST["id_materia"];
-    $matricula = $_POST["matricula"];
+$rutaPrograma = "";
+$fecha1 = date("d-m-Y");
+$materia = $_POST["id_materia"];
+$matricula = $_POST["matricula"];
 
-    if ($_FILES["PDF"]["type"] == "application/pdf") {
+if ($_FILES["PDF"]["type"] == "application/pdf") {
 
-        $nombre = $_FILES["PDF"]["name"];
-        $archivo = "Rep__".$matricula."__".$fecha1."__".$nombre;
-        $rutaPrograma = "../Documentos/".$archivo;
+    $nombre = $_FILES["PDF"]["name"];
+    $archivo = "Rep__" . $matricula . "__" . $fecha1 . "__" . $nombre;
+    $rutaPrograma = "../Documentos/" . $archivo;
 
-        move_uploaded_file($_FILES["PDF"]["tmp_name"], $rutaPrograma);
+    move_uploaded_file($_FILES["PDF"]["tmp_name"], $rutaPrograma);
 
-        $fecha = date("d-m-Y H:i:s");
+    $fecha = date("d-m-Y H:i:s");
 
-        $tablaBD = "reportes";
+    $tablaBD = "reportes";
 
-        $datosC = array("nombre" => $nombre, "PDF" => $archivo, "fecha" => $fecha, "matricula" => $_POST["matricula"], "id_materia" => $_POST["id_materia"]);
+    $datosC = array("nombre" => $nombre, "PDF" => $archivo, "fecha" => $fecha, "matricula" => $_POST["matricula"], "id_materia" => $_POST["id_materia"]);
 
-        $resultado = DocumentosEcenM::SubirDocRepM($tablaBD, $datosC);
-        if ($resultado == true) {
-            echo '<script>
-
-                window.location = "'.URL_SERVER.'verCarpeta/'.$materia.'/'. $matricula .'";
-
-                </script>';
-        }
-
-
-    } else {
-        echo 'Error 1';
-        }
-
+    $resultado = DocumentosEcenM::SubirDocRepM($tablaBD, $datosC);
+    if ($resultado == true) {
+        echo '<script>
+    
+                    window.location = "http://localhost/Sistema/verCarpeta/' . $materia . '/' . $matricula . '";
+                   
+    
+                    </script>';
+    }
+} else {
+    echo '<div class="alert alert-info " style="background-color: #880E4F; color:#fff; font-family: Verdana; margin:25px ; border-radius: 20px;" > <br> <h3 style="margin:20px" >Upss. parece que tienes problemas para subir el documento, retifica que el documento sea en formato PDF.  <p> Ejemplo: P-DRSS-02-F-14 Reporte de Actividades de Residencia Profesional.pdf </p> </h3><br>
+            <a style="background-color: #fff;  font-family: Verdana; width: 100px; margin:25px ;height: 50px; padding:10px; text-decoration:none; color: black; " type="button" href="http://localhost/Sistema/verCarpeta/' . $materia . '/' . $matricula . '" > Regresar</a> <br> <br>
+            </div> ';
+}

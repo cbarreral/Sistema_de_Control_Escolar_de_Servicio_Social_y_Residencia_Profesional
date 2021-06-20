@@ -109,7 +109,7 @@
                                   <input type="tel" name="telefono" id="form1Example2" class="form-control" />
                                   <label class="form-label" for="form1Example2">Teléfono:</label>
                               </div>
-                              <input type="text" name="rol" id="rol" class="form-control" value="Alumno" />
+                              <input type="hidden" name="rol" id="rol" class="form-control" value="Alumno" />
                              </div>
 
                               <br>

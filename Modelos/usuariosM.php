@@ -119,7 +119,27 @@ class UsuariosM extends ConexionBD
 
         $pdo = null;
     }
+    public function verPlantillaM($tablaBD, $columna, $valor)
+    {
 
+        if ($columna != null) {
+            $pdo = ConexionBD::conBD()->prepare("SELECT * FROM $tablaBD WHERE $columna =:$columna");
+            $pdo->bindParam(":" . $columna, $valor, PDO::PARAM_STR);
+            $pdo->execute();
+            return $pdo->fetch();
+            $pdo->close();
+
+            $pdo = null;
+        } else {
+            $pdo = ConexionBD::conBD()->prepare("SELECT * FROM $tablaBD ");
+
+            $pdo->execute();
+            return $pdo->fetchAll();
+            $pdo->close();
+
+            $pdo = null;
+        }
+    }
     //Ver usuarios
     public function verUsuarioM($tablaBD, $columna, $valor)
     {

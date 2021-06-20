@@ -31,7 +31,6 @@ $(".T").on("click", ".EditarUsuario", function () {
             $("#correoEU").val(resultadoJS["correo"]);
             $("#tipoEU").val(resultadoJS["tipo"]);
             $("#a_academicoEU").val(resultadoJS["a_academico"])
-
             if (resultadoJS["rol"] == "Admin") {
                 $("#carrera").hide();
             } else {
@@ -92,6 +91,36 @@ $("#Validarmatricula"||"#matriculaEU").change(function () {
                 $("#Validarmatricula").val("");
                 $("#matriculaEU").parent().after('<div class="alert alert-danger">La Matricula o Usuario ya Existe.</div>');
                 $("#matriculaEU").val("");
+            }
+
+        }
+    })
+
+})
+
+$("#checkPlantilla"||"#plantilla").change(function () {
+
+    $(".alert").remove();
+
+    var matricula = $(this).val();
+    var datos = new FormData();
+    datos.append("checkPlantilla", matricula);
+
+    $.ajax({
+        url: "Ajax/usuariosA.php",
+        method: "POST",
+        data: datos,
+        dataType: "json",
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (resultadoJS) {
+
+            if (resultadoJS) {
+                $("#checkPlantilla").parent().after('<div class="alert alert-danger">La Matricula o Usuario ya Existe.</div>');
+                $("#checkPlantilla").val("");
+                $("#plantilla").parent().after('<div class="alert alert-danger">La Matricula o Usuario ya Existe.</div>');
+                $("#plantilla").val("");
             }
 
         }

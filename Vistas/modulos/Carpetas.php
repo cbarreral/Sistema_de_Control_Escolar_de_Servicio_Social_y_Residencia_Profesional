@@ -4,6 +4,9 @@ $user = UsuariosC::VerUsuariosC("matricula", $_SESSION["matricula"]);
 <div class="content-wrapper">
 
     <div class="content-header">
+    <a href="<?php echo URL_SERVER ?>inicio">
+            <button class="btn btn-info" style="background-color: #26A69A;">Atrás</button>
+        </a>
         <div class="box">
             <div class="container">
                 <br>
@@ -50,7 +53,7 @@ $user = UsuariosC::VerUsuariosC("matricula", $_SESSION["matricula"]);
                                                             
                                                             <td>
                                                                 <a href="' . URL_SERVER . 'verCarpeta/' . $estatus["carreraAlumno"] . '/' . $estatus["matricula"] . '">
-                                                                    <button class="btn btn-info" style="background-color: #4CAF50;">Carpeta de archivos</button>
+                                                                    <button class="btn btn-info" style="background-color: #4CAF50;">Carpeta de archivos <span class="badge bg-primary">New</span></button>
                                                                 </a>
                                                             </td>
                                                             <td>
